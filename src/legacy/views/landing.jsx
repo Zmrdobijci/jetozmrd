@@ -57,7 +57,7 @@ function Landing({ go, open }) {
         <div className="wrap manifest-single">
           <span className="manifest-bar" aria-hidden="true"></span>
           <p className="manifest-lead">
-            Dali byste svoji babičku na starosti člověku, který lže, krade, hází své
+            Dali byste svoji babičku na starost člověku, který lže, krade, hází své
             spolupracovníky přes palubu a křivě přísahá na zdraví svých dětí?
           </p>
           <p className="manifest-sub">
