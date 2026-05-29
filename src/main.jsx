@@ -14,6 +14,7 @@ import './legacy/shared.jsx';
 import './legacy/views/landing.jsx';
 import './legacy/views/mapa.jsx';
 import './legacy/views/ai.jsx';
+import './legacy/views/hra.jsx';
 import './legacy/views/detail.jsx';
 import './legacy/views/hledat.jsx';
 import './legacy/views/metodika.jsx';

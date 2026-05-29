@@ -371,3 +371,55 @@
 /* footer slogan */
 .foot-slogan { background: none; border: 0; padding: 0; align-self: center; cursor: pointer; font-family: var(--font-display); font-weight: 700; font-size: clamp(22px, 3vw, 34px); letter-spacing: -0.03em; color: var(--ink); }
 .foot-slogan:hover { color: var(--signal); }
+
+/* ============================================================
+   ZMRD NAKED ATTRACTION
+   ============================================================ */
+.na-em { color: var(--signal); }
+.na-stage { display: grid; grid-template-columns: 330px 1fr; gap: 40px; align-items: start; padding-bottom: 10px; }
+.na-photo-col { position: sticky; top: 88px; }
+.na-photo { position: relative; aspect-ratio: 3 / 4; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper-2); box-shadow: var(--shadow); }
+.na-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block; }
+.na-curtain { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.na-slice { flex: 1; transition: opacity .45s ease; opacity: 0; }
+.na-slice.on { opacity: 1; background: repeating-linear-gradient(135deg, oklch(0.87 0.01 90) 0 11px, oklch(0.80 0.012 90) 11px 22px); box-shadow: inset 0 -1px 0 var(--paper); }
+.na-photo-tag { position: absolute; left: 10px; bottom: 10px; background: var(--ink); color: var(--paper); padding: 4px 9px; border-radius: 3px; font-size: 11px; letter-spacing: 0.04em; }
+.na-photo-win { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; background: linear-gradient(transparent, oklch(0.18 0.01 70 / 0.9)); display: flex; flex-direction: column; gap: 9px; align-items: flex-start; animation: fade .4s ease; }
+.na-win-name { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: var(--paper); }
+.na-photo-win .verdict { background: oklch(0.18 0.01 70 / 0.5); }
+.na-meter { display: flex; justify-content: space-between; margin-top: 8px; font-size: 10px; color: var(--ink-faint); letter-spacing: 0.1em; text-transform: uppercase; }
+
+.na-play { display: flex; flex-direction: column; gap: 26px; }
+.na-clue-list { list-style: none; margin: 12px 0 14px; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+.na-clue { display: flex; gap: 12px; padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); font-size: 15px; line-height: 1.42; animation: fade .3s ease; }
+.na-clue-n { color: var(--signal); font-size: 12px; flex: none; padding-top: 2px; }
+.na-clue strong { font-family: var(--font-display); font-weight: 700; }
+.na-nomore { color: var(--ink-faint); font-size: 12px; }
+
+.na-opt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+.na-opt { position: relative; display: flex; flex-direction: column; gap: 3px; align-items: flex-start; text-align: left; padding: 14px 16px; border: 1.5px solid var(--line-2); border-radius: var(--radius); background: var(--paper); transition: border-color .15s, background .15s, transform .1s; min-width: 0; }
+.na-opt:hover:not(:disabled) { border-color: var(--ink); transform: translateY(-1px); }
+.na-opt:disabled { cursor: default; }
+.na-opt-name { font-family: var(--font-display); font-weight: 700; font-size: 17px; letter-spacing: -0.02em; white-space: nowrap; }
+.na-opt-party { font-size: 11px; color: var(--ink-faint); }
+.na-opt.wrong { border-color: var(--signal); background: var(--signal-tint); opacity: 0.55; }
+.na-opt.win { border-color: var(--clean); background: var(--clean-tint); }
+.na-opt-x { position: absolute; top: 10px; right: 13px; color: var(--signal); font-weight: 700; }
+.na-opt-ok { position: absolute; top: 10px; right: 12px; color: var(--clean); display: grid; }
+
+.na-result { border-top: 2px solid var(--ink); padding-top: 18px; font-size: 16px; }
+.na-result-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.na-hint { color: var(--signal-ink); font-size: 13px; }
+.na-skip { background: none; border: 0; color: var(--ink-faint); font-size: 12px; letter-spacing: 0.04em; padding: 0; align-self: flex-start; }
+.na-skip:hover { color: var(--ink); }
+.na-disclaim { margin-top: 22px; font-size: 11.5px; color: var(--ink-faint); }
+
+/* Naked responsive — placed after the base rules above so the cascade
+   (equal specificity, @media adds none) resolves to these on small screens. */
+@media (max-width: 900px) {
+  .na-stage { grid-template-columns: 1fr; gap: 28px; }
+  .na-photo-col { position: static; max-width: 300px; }
+}
+@media (max-width: 560px) {
+  .na-opt-grid { grid-template-columns: 1fr; }
+}
