@@ -1,0 +1,211 @@
+/* ============================================================
+   jetozmrd.cz — design system
+   lean civic web · D-FENS dikce · jedna varovná barva
+   ============================================================ */
+
+:root {
+  /* paper & ink — warm neutrals, low chroma */
+  --paper:      oklch(0.985 0.006 95);
+  --paper-2:    oklch(0.955 0.008 95);
+  --paper-3:    oklch(0.925 0.010 95);
+  --ink:        oklch(0.205 0.012 70);
+  --ink-soft:   oklch(0.435 0.012 70);
+  --ink-faint:  oklch(0.605 0.010 80);
+  --line:       oklch(0.875 0.010 90);
+  --line-2:     oklch(0.815 0.012 88);
+
+  /* the single warning colour + supporting signals (derived via color-mix
+     from --signal so one tweak recolours the whole system) */
+  --signal:      oklch(0.555 0.205 27);   /* vermilion — zmrd */
+  --signal-ink:  color-mix(in oklch, var(--signal), black 20%);
+  --signal-tint: color-mix(in oklch, var(--signal) 10%, var(--paper));
+  --signal-tint2:color-mix(in oklch, var(--signal) 18%, var(--paper));
+  --clean:       oklch(0.560 0.105 150);  /* muted green — čistý */
+  --clean-tint:  oklch(0.945 0.035 150);
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body:    'Public Sans', system-ui, sans-serif;
+  --font-mono:    'Space Mono', ui-monospace, monospace;
+
+  --wrap: 1120px;
+  --radius: 4px;
+  --shadow: 0 1px 2px oklch(0.2 0.01 70 / 0.06), 0 8px 24px oklch(0.2 0.01 70 / 0.05);
+  --shadow-lift: 0 2px 6px oklch(0.2 0.01 70 / 0.08), 0 18px 50px oklch(0.2 0.01 70 / 0.09);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--signal); color: var(--paper); }
+
+a { color: inherit; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0 0 1em; text-wrap: pretty; }
+
+button { font-family: inherit; cursor: pointer; }
+
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 24px; }
+.mono { font-family: var(--font-mono); }
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+/* ---------- app shell ---------- */
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+.app-main { flex: 1 0 auto; }
+
+/* ---------- top bar ---------- */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  background: oklch(0.985 0.006 95 / 0.88);
+  backdrop-filter: saturate(1.4) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-inner {
+  max-width: var(--wrap); margin: 0 auto; padding: 0 24px;
+  height: 64px; display: flex; align-items: center; gap: 22px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700;
+  letter-spacing: -0.03em; font-size: 20px;
+  background: none; border: 0; padding: 0; color: var(--ink);
+}
+.brand-mark {
+  width: 26px; height: 26px; border-radius: 50%;
+  border: 2px solid var(--ink); position: relative; flex: none;
+  display: grid; place-items: center;
+}
+.brand-mark::after {
+  content: ""; width: 2px; height: 9px; background: var(--signal);
+  transform-origin: bottom center; transform: rotate(38deg) translateY(-1px);
+}
+.brand em { color: var(--signal); font-style: normal; }
+
+.nav { display: flex; gap: 2px; margin-left: auto; align-items: center; }
+.nav button {
+  background: none; border: 0; padding: 9px 13px; border-radius: var(--radius);
+  font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-soft);
+}
+.nav button:hover { background: var(--paper-3); color: var(--ink); }
+.nav button.active { color: var(--ink); }
+.nav button.active::after {
+  content: ""; display: block; height: 2px; background: var(--signal);
+  margin-top: 5px; border-radius: 2px;
+}
+.nav-search {
+  display: flex; align-items: center; gap: 7px; margin-left: 6px;
+  border: 1px solid var(--line-2); border-radius: 999px; padding: 6px 12px;
+  background: var(--paper);
+}
+.nav-search input {
+  border: 0; background: none; outline: none; font-family: var(--font-body);
+  font-size: 14px; width: 120px; color: var(--ink);
+}
+.nav-search input::placeholder { color: var(--ink-faint); }
+
+.menu-btn { display: none; margin-left: auto; background: none; border: 1px solid var(--line-2);
+  border-radius: var(--radius); padding: 8px 10px; }
+.mobile-nav { display: none; }
+
+@media (max-width: 860px) {
+  .nav, .nav-search { display: none; }
+  .menu-btn { display: block; }
+  .mobile-nav.open {
+    display: flex; flex-direction: column; gap: 2px;
+    border-bottom: 1px solid var(--line); background: var(--paper);
+    padding: 8px 16px 14px;
+  }
+  .mobile-nav button {
+    text-align: left; background: none; border: 0; padding: 12px 8px;
+    font-family: var(--font-mono); font-size: 14px; text-transform: uppercase;
+    letter-spacing: 0.04em; color: var(--ink-soft); border-radius: var(--radius);
+  }
+  .mobile-nav button.active { color: var(--signal); }
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; gap: 9px;
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em;
+  text-transform: uppercase; padding: 13px 20px; border-radius: var(--radius);
+  border: 1.5px solid var(--ink); background: var(--ink); color: var(--paper);
+  transition: transform .12s ease, background .15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn.ghost { background: none; color: var(--ink); }
+.btn.ghost:hover { background: var(--ink); color: var(--paper); }
+.btn.signal { background: var(--signal); border-color: var(--signal); }
+
+/* ---------- score chip / verdict ---------- */
+.verdict {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 5px 11px; border-radius: 999px;
+  border: 1.5px solid currentColor;
+}
+.v-0 { color: var(--clean); }
+.v-low { color: oklch(0.58 0.12 75); }
+.v-mid { color: oklch(0.58 0.17 45); }
+.v-high { color: var(--signal); }
+.v-gray { color: var(--ink-faint); }
+
+.score-num {
+  font-family: var(--font-display); font-weight: 700; line-height: 0.9;
+  letter-spacing: -0.04em; font-variant-numeric: tabular-nums;
+}
+
+/* ---------- cards / lists shared ---------- */
+.card {
+  background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+}
+
+/* ---------- footer ---------- */
+.foot {
+  border-top: 1px solid var(--line); margin-top: 80px;
+  padding: 40px 0 56px; color: var(--ink-soft); font-size: 14px;
+}
+.foot .wrap { display: flex; flex-wrap: wrap; gap: 28px; justify-content: space-between; }
+.foot .mono { font-size: 12px; letter-spacing: 0.04em; }
+
+/* fade-in for view switches — opacity stays 1 so content is never hidden if
+   the animation is throttled/paused; only the gentle slide animates. */
+.view { opacity: 1; animation: fade .28s ease; }
+@keyframes fade { from { transform: translateY(7px); } to { transform: none; } }
+
+/* striped placeholder for portraits */
+.portrait {
+  background:
+    repeating-linear-gradient(135deg, var(--paper-2) 0 9px, var(--paper-3) 9px 18px);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  display: grid; place-items: center; color: var(--ink-faint);
+  font-family: var(--font-mono); font-size: 11px; text-align: center;
+}
