@@ -5,8 +5,9 @@ dist/
 # OS / editor cruft
 .DS_Store
 
-# Local Claude Code tooling
-.claude/
+# Local Claude Code tooling — skills jsou verzované a sdílené, zbytek zůstává lokální
+.claude/*
+!.claude/skills/
 
 # Dev artifacts from the original Claude.ai artifact export — not part of the site
 uploads/
