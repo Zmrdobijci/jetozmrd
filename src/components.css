@@ -297,7 +297,7 @@
 /* ============================================================
    METODIKA
    ============================================================ */
-.meth-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding-bottom: 20px; }
+.meth-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 56px 0 0; align-items: stretch; }
 .meth-pillar { border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; background: var(--paper); }
 .meth-num { font-size: 12px; color: var(--signal); letter-spacing: 0.1em; }
 .meth-pillar h2 { font-size: 26px; margin: 10px 0 14px; }
@@ -307,7 +307,19 @@
 .meth-source-name { font-size: 13px; color: var(--signal-ink); font-weight: 700; width: 130px; flex: none; }
 .meth-source-d { font-size: 14px; color: var(--ink-soft); }
 
-.meth-dims { padding: 56px 0 20px; }
+.meth-quotes { display: flex; flex-direction: column; gap: 12px; margin: 16px 0 18px; }
+.meth-blog { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--signal-ink); letter-spacing: 0.04em; }
+.meth-blog:hover { color: var(--signal); }
+.meth-skill-top { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; margin-top: 24px; padding: 30px 32px; border: 1px solid var(--line); border-left: 3px solid var(--signal); border-radius: var(--radius); background: var(--paper-2); }
+.meth-skill-top h2 { font-size: 26px; margin: 10px 0 14px; }
+.meth-skill-top p { font-size: 16px; color: var(--ink-soft); max-width: 620px; }
+.meth-skill-top p + p { margin-top: 12px; }
+.meth-skill-top-cta { flex: none; }
+.meth-databaze { padding: 56px 0 0; }
+.meth-databaze .meth-dims-sub { max-width: 760px; }
+
+.meth-dims { padding: 56px 0 0; }
+.meth-dims-top { padding-top: 20px; }
 .meth-dims-h2 { font-size: clamp(26px, 4vw, 38px); margin-top: 8px; }
 .meth-dims-sub { color: var(--ink-soft); font-size: 17px; margin-top: 6px; }
 .meth-dims-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 26px; }
@@ -317,16 +329,19 @@
 .meth-dim h3 { font-size: 20px; margin-bottom: 8px; }
 .meth-dim p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
 
-.meth-scale { padding: 40px 0 20px; }
-.scale-rows { display: flex; flex-direction: column; gap: 2px; margin-top: 22px; }
-.scale-row { display: grid; grid-template-columns: 110px 200px 1fr; gap: 18px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.scale-rows { display: flex; flex-direction: column; gap: 2px; margin-top: 18px; }
+.scale-row { display: grid; grid-template-columns: 92px 1fr; gap: 4px 14px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.scale-row:last-child { border-bottom: none; }
+.scale-row .verdict { grid-row: span 2; align-self: center; }
+.scale-t { grid-column: 2; }
+.scale-d { grid-column: 2; }
 .scale-t { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
 .scale-d { font-size: 15px; color: var(--ink-soft); }
 
-.meth-legal { padding: 44px 0 0; max-width: 760px; color: var(--ink-soft); font-size: 16px; }
+.meth-legal { padding: 56px 0 0; max-width: 760px; color: var(--ink-soft); font-size: 16px; }
 .meth-legal .kicker { margin-bottom: 12px; }
 .meth-legal-sign { color: var(--ink); font-size: 13px; margin-top: 14px; }
-.meth-cta { padding: 40px 0 10px; }
+.meth-cta { padding: 48px 0 24px; }
 
 /* ============================================================
    RESPONSIVE

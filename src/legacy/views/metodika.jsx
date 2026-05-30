@@ -21,40 +21,28 @@ function Metodika({ go }) {
         </p>
       </header>
 
-      <div className="meth-pillars">
-        <div className="meth-pillar">
-          <div className="meth-num mono">Pilíř I</div>
-          <h2>D-FENS zmrdologie</h2>
+      <section className="meth-skill-top">
+        <div className="meth-skill-top-body">
+          <div className="meth-num mono">Reprodukovatelnost</div>
+          <h2>Záznamy generuje AI podle skillu</h2>
           <p>
-            Klasická behaviorální taxonomie identifikující základní znaky zmrda. Původně psaná
-            pro firemní prostředí, na politiku ovšem sedí překvapivě dobře. Klíčové zjištění
-            autora platí beze změny i po dvou dekádách:
+            Profily v databázi nesepisuje redakce ručně — generuje je AI (Claude) podle přesně
+            definovaného zadání, tzv. <em>skillu</em>: jen doložitelná fakta, šest os zmrdství,
+            D-FENS taxonomie jako druhý filtr a u každé rozsvícené osy citovatelný zdroj.
           </p>
-          <blockquote className="dictum sm">
-            <span className="dictum-mark">„</span>
-            Zmrd by raději porodil ježka, než by utrpěl porážku.
-            <footer className="mono">— D-FENS, 2001</footer>
-          </blockquote>
-        </div>
-        <div className="meth-pillar">
-          <div className="meth-num mono">Pilíř II</div>
-          <h2>Faktografická databáze</h2>
           <p>
-            Vše veřejné, vše dohledatelné, vše citovatelné. Žádný výrok zmrdometru nestojí na
-            dojmu — každá rozsvícená dimenze má v profilu odkaz na zdroj.
+            Skill zveřejňujeme schválně — postup má být auditovatelný a reprodukovatelný.
+            Stáhni si ho a ověř, podle jakých pravidel záznam vznikl.
           </p>
-          <div className="meth-sources">
-            {sources.map(([s, d]) => (
-              <div className="meth-source" key={s}>
-                <span className="meth-source-name mono">{s}</span>
-                <span className="meth-source-d">{d}</span>
-              </div>
-            ))}
-          </div>
         </div>
-      </div>
+        <div className="meth-skill-top-cta">
+          <a className="btn signal meth-ai-dl" href="zmrdobijci-skill.md" download="zmrdobijci-skill.md">
+            Stáhnout skill (SKILL.md) <Ico k="download" size={16} />
+          </a>
+        </div>
+      </section>
 
-      <section className="meth-dims">
+      <section className="meth-dims meth-dims-top">
         <div className="kicker">Měřicí osy</div>
         <h2 className="meth-dims-h2">Šest dimenzí zmrdství</h2>
         <p className="meth-dims-sub">Skóre = počet os, u kterých existuje doložený nález. 0 čisté, 6 učebnicové.</p>
@@ -70,21 +58,70 @@ function Metodika({ go }) {
         </div>
       </section>
 
-      <section className="meth-scale">
-        <div className="kicker">Kategorizace</div>
-        <h2 className="meth-dims-h2">Od „není zmrd" po „učebnicový"</h2>
-        <div className="scale-rows">
-          {[
-            ['0/6', 'Není zmrd', 'v-0', 'Čistý štít. Slabé vedení sem nepatří — to není zmrdství.'],
-            ['1/6', 'Jedna skvrna', 'v-low', 'Jeden doložený prohřešek. Jinak v pořádku.'],
-            ['2–3/6', 'Hraniční případ', 'v-mid', 'Začíná svítit. Volič by měl zpozornět.'],
-            ['4/6', 'Plnokrevný zmrd', 'v-high', 'Většina os svítí. Vzorec, ne náhoda.'],
-            ['5–6/6', 'Systémový / učebnicový', 'v-high', 'Zmrdství jako metoda. D-FENS by uronil slzu hrdosti.'],
-          ].map(([s, t, cls, d]) => (
-            <div className="scale-row" key={t}>
-              <span className={'verdict ' + cls}><strong>{s}</strong></span>
-              <span className="scale-t">{t}</span>
-              <span className="scale-d">{d}</span>
+      <div className="meth-pillars">
+        <div className="meth-pillar">
+          <div className="meth-num mono">Pilíř I</div>
+          <h2>D-FENS zmrdologie</h2>
+          <p>
+            Klasická behaviorální taxonomie identifikující základní znaky zmrda. Původně psaná
+            pro firemní prostředí, na politiku ovšem sedí překvapivě dobře. Klíčové zjištění
+            autora platí beze změny i po dvou dekádách:
+          </p>
+          <div className="meth-quotes">
+            <blockquote className="dictum sm">
+              <span className="dictum-mark">„</span>
+              Zmrd by raději porodil ježka, než by utrpěl porážku.
+            </blockquote>
+            <blockquote className="dictum sm">
+              <span className="dictum-mark">„</span>
+              Zmrd nikdy neudělá chybu. Chybu vždycky udělal někdo jiný, kdo mu nestihl uhnout.
+            </blockquote>
+            <blockquote className="dictum sm">
+              <span className="dictum-mark">„</span>
+              Poznáš ho podle toho, že čím výš stoupá, tím za míň věcí je odpovědný.
+            </blockquote>
+            <blockquote className="dictum sm">
+              <span className="dictum-mark">„</span>
+              Navrch huj, vespod fuj. Práce žádná, ega na rozdávání.
+            </blockquote>
+          </div>
+          <a className="meth-blog mono" href="https://www.dfens-cz.com/" target="_blank" rel="noopener noreferrer">
+            Číst D-FENS na dfens-cz.com <Ico k="ext" size={14} />
+          </a>
+        </div>
+        <div className="meth-pillar meth-pillar-scale">
+          <div className="meth-num mono">Kategorizace</div>
+          <h2>Od „není zmrd" po „učebnicový"</h2>
+          <div className="scale-rows">
+            {[
+              ['0/6', 'Není zmrd', 'v-0', 'Čistý štít. Slabé vedení sem nepatří — to není zmrdství.'],
+              ['1/6', 'Jedna skvrna', 'v-low', 'Jeden doložený prohřešek. Jinak v pořádku.'],
+              ['2–3/6', 'Hraniční případ', 'v-mid', 'Začíná svítit. Volič by měl zpozornět.'],
+              ['4/6', 'Plnokrevný zmrd', 'v-high', 'Většina os svítí. Vzorec, ne náhoda.'],
+              ['5–6/6', 'Systémový / učebnicový', 'v-high', 'Zmrdství jako metoda. D-FENS by uronil slzu hrdosti.'],
+            ].map(([s, t, cls, d]) => (
+              <div className="scale-row" key={t}>
+                <span className={'verdict ' + cls}><strong>{s}</strong></span>
+                <span className="scale-t">{t}</span>
+                <span className="scale-d">{d}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <section className="meth-databaze">
+        <div className="kicker">Pilíř II · data</div>
+        <h2 className="meth-dims-h2">Faktografická databáze</h2>
+        <p className="meth-dims-sub">
+          Vše veřejné, vše dohledatelné, vše citovatelné. Žádný výrok zmrdometru nestojí na
+          dojmu — každá rozsvícená dimenze má v profilu odkaz na zdroj.
+        </p>
+        <div className="meth-sources">
+          {sources.map(([s, d]) => (
+            <div className="meth-source" key={s}>
+              <span className="meth-source-name mono">{s}</span>
+              <span className="meth-source-d">{d}</span>
             </div>
           ))}
         </div>

@@ -76,6 +76,8 @@ function Ico({ k, size = 18 }) {
       return <svg {...c}><path d="M5 12.5l4.5 4.5L19 7" /></svg>;
     case 'doc':
       return <svg {...c}><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v4h4" /><line x1="9" y1="12" x2="15" y2="12" /><line x1="9" y1="15.5" x2="15" y2="15.5" /></svg>;
+    case 'download':
+      return <svg {...c}><line x1="12" y1="4" x2="12" y2="15" /><path d="M7 11l5 5 5-5" /><path d="M5 19h14" /></svg>;
     case 'pin':
       return <svg {...c}><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z" /><circle cx="12" cy="10" r="2.4" /></svg>;
     case 'bolt': // blesk — nejsilnější výkon
