@@ -58,7 +58,7 @@ function NakedView({ go, open }) {
             <div className="na-curtain">
               {Array.from({ length: SLICES }).map((_, i) => {
                 const covered = i < SLICES - revealed;
-                return <div key={i} className={'na-slice' + (covered ? ' on' : '')}></div>;
+                return <div key={i} className={'na-slice' + (covered ? '' : ' off')}></div>;
               })}
             </div>
             {!won && <div className="na-photo-tag mono">odhaleno {Math.round((revealed / SLICES) * 100)} %</div>}

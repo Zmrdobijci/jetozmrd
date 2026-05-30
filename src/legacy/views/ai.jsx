@@ -21,25 +21,29 @@ function AiZmrdolog({ go, open }) {
   const buildLocalAnswer = (person, name) => {
     if (!person) {
       return [
-        'Náhled bez živé AI — řídíme se jen doloženými fakty.',
-        'VERDIKT: není v databázi — nelze doložit',
-        'ROZBOR: ' + name + ' zatím ve zmrdometru není. Bez doložených veřejných zdrojů verdikt nevynášíme — to by byl jen dojem, a těmi se neřídíme.',
+        'VERDIKT: není v databázi — dojmy neměříme',
+        'ROZBOR: ' + name + ' ve zmrdometru zatím není. Bez veřejně doložitelných zdrojů (Demagog, Hlídač státu, psp.cz, justice.cz) verdikt nevynášíme — to by byl jen dojem.',
         'POINTA: Co není doložené, to nehodnotíme. Zatím.',
         'Hodnotíme doložené chování, ne osobu.',
       ].join('\n');
     }
     const lit = DIMENSIONS.filter((d) => person.dims[d.key].lit);
-    const rozbor = lit.length
-      ? lit.slice(0, 4).map((d) => d.label.toLowerCase() + ' — ' + person.dims[d.key].finding).join(' ')
-      : 'Žádná z šesti os není doložena jako problematická.';
     const score = person.score === null ? 'šedá zóna' : person.score + '/6';
+    const osy = lit.map((d) => d.label.toLowerCase());
+    // ROZBOR vede hlasem (categoryReason — proč právě tahle typologie) a uzavře
+    // ho věcný výčet rozsvícených os. Suché je jen to, co je doložené.
+    const rozbor = person.categoryReason
+      ? person.categoryReason + (osy.length ? ' Rozsvícené osy: ' + osy.join(', ') + '.' : '')
+      : (osy.length
+          ? 'Svítí ' + osy.length + ' z šesti os: ' + osy.join(', ') + '. Detaily a citace v doloženém profilu.'
+          : 'Žádná z šesti os není doložena — a bez důkazu nesvítíme.');
+    const pointa = person.dictum || (lit.length >= 4
+      ? 'Vzorec je čitelný a doložený. Žádný dojem, jen záznam.'
+      : 'Zatím spíš jednotlivosti než vzorec — sledujeme dál.');
     return [
-      'Náhled bez živé AI — verdikt sestaven přímo z naší doložené databáze.',
       'VERDIKT: ' + score + ' — ' + person.category,
       'ROZBOR: ' + rozbor,
-      'POINTA: ' + (lit.length >= 4
-        ? 'Vzorec je čitelný a doložený. Žádný dojem, jen záznam.'
-        : 'Zatím spíš jednotlivosti než vzorec — sledujeme dál.'),
+      'POINTA: ' + pointa,
       'Hodnotíme doložené chování, ne osobu.',
     ].join('\n');
   };

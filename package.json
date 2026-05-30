@@ -4,7 +4,10 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "sync:skill": "cp .claude/skills/zmrdobijci/SKILL.md public/zmrdobijci-skill.md",
+    "predev": "npm run sync:skill",
     "dev": "vite",
+    "prebuild": "npm run sync:skill",
     "build": "vite build",
     "preview": "vite preview"
   },
