@@ -116,6 +116,7 @@
 .pcard:hover { border-color: var(--line-2); transform: translateY(-1px); box-shadow: var(--shadow); }
 .pcard-rank { font-size: 13px; color: var(--ink-faint); width: 24px; flex: none; }
 .pcard-portrait { width: 46px; height: 46px; flex: none; font-size: 9px; }
+.pcard-photo { object-fit: cover; object-position: 50% 16%; }
 .pcard-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 6px; }
 .pcard-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .pcard-name { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
@@ -283,6 +284,8 @@
 .ladder-row:last-child { border-bottom: 0; }
 .ladder-row:hover { background: var(--paper-2); }
 .ladder-rank { font-size: 14px; color: var(--ink-faint); width: 26px; flex: none; }
+.ladder-photo { width: 48px; height: 48px; flex: none; border-radius: var(--radius); object-fit: cover; object-position: 50% 16%; border: 1px solid var(--line); }
+.ladder-portrait { width: 48px; height: 48px; flex: none; font-size: 9px; }
 .ladder-name { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
 .ladder-nm { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.02em; }
 .ladder-party { font-size: 11.5px; color: var(--ink-faint); letter-spacing: 0.03em; }
@@ -350,6 +353,7 @@
   .gallery-grid { grid-template-columns: 1fr; }
   .scorepanel-num .score-num { font-size: 56px; }
   .ladder-row { gap: 12px; padding: 14px; }
+  .ladder-photo, .ladder-portrait { width: 40px; height: 40px; }
   .ladder-bar i { width: 12px; height: 12px; }
   .ladder-score { width: 50px; }
   .finding { padding: 18px 16px; gap: 12px; }
