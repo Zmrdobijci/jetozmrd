@@ -74,8 +74,19 @@ for (const b of blocks) {
   people.push({ name, obvod: obvod ? Number(obvod) : null, scope: scope || null, tokens: nameTokens(name) });
 }
 
+// ---- 2b) načti oskórované kandidáty ze senat-skore.js (klíče kand-<obvod>-<num>) ----
+const SKORE = resolve(ROOT, 'src/legacy/senat-skore.js');
+let skoreIds = new Set();
+try {
+  const ssrc = readFileSync(SKORE, 'utf8');
+  skoreIds = new Set([...ssrc.matchAll(/'(kand-\d+-\d+)'\s*:/g)].map((m) => m[1]));
+} catch { /* soubor nemusí existovat */ }
+
 // ---- 3) párování ----
+// kandidát je v DB, pokud má oskórovaný profil v senat-skore.js (kand-obvod-num)
+// nebo se jménem+obvodem shoduje s hand-written osobou v data.js
 const isPresent = (cand) =>
+  skoreIds.has(`kand-${cand.obvod}-${cand.num}`) ||
   people.some((p) => subset(cand.tokens, p.tokens) && (p.obvod == null || p.obvod === cand.obvod));
 
 const present = candidates.filter(isPresent);

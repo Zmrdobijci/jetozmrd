@@ -1555,22 +1555,34 @@
   (function mergeKandidati() {
     const roster = (typeof window !== 'undefined' && window.SENAT_KANDIDATI_2026) || [];
     if (!roster.length) return;
+    const skore = (typeof window !== 'undefined' && window.SENAT_SKORE) || {};
     const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
       .replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(Boolean);
     const subset = (a, b) => a.length && a.every((t) => b.includes(t));
     const scored = SENAT.map((p) => ({ obvod: p.obvod, toks: norm(p.name) }));
     roster.forEach((c) => {
       const ct = norm(c.name);
-      const exists = scored.some((s) => s.obvod === c.obvod && subset(ct, s.toks));
-      if (exists) return;
-      SENAT.push(person({
-        id: 'kand-' + c.obvod + '-' + c.num,
-        name: c.name, party: c.party,
+      // už hand-written výš v SENAT (incumbenti)? nech být.
+      if (scored.some((s) => s.obvod === c.obvod && subset(ct, s.toks))) return;
+      const id = 'kand-' + c.obvod + '-' + c.num;
+      const base = {
+        id, name: c.name, party: c.party,
         role: 'kandidát/ka do Senátu · obvod ' + c.obvod + (c.mesto ? ' (' + c.mesto + ')' : ''),
-        scope: 'senát', obvod: c.obvod, gray: true,
-        categoryReason: 'Kandidát/ka do Senátu' + (c.job ? ' (' + c.job + ')' : '') + '. Zmrdometr zatím neprověřil — šedá zóna do doložení faktů.',
-        lit: [],
-      }));
+        scope: 'senát', obvod: c.obvod,
+      };
+      const s = skore[id];
+      if (s) {
+        SENAT.push(person(Object.assign(base, {
+          category: s.category, categoryReason: s.categoryReason, dictum: s.dictum,
+          highlight: s.highlight, lit: s.lit || [], dfens: s.dfens, overrides: s.overrides,
+        })));
+      } else {
+        SENAT.push(person(Object.assign(base, {
+          gray: true,
+          categoryReason: 'Kandidát/ka do Senátu' + (c.job ? ' (' + c.job + ')' : '') + '. Zmrdometr zatím neprověřil — šedá zóna do doložení faktů.',
+          lit: [],
+        })));
+      }
     });
   })();
 
