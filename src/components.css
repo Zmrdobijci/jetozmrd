@@ -423,8 +423,8 @@
 .na-photo { position: relative; aspect-ratio: 3 / 4; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper-2); box-shadow: var(--shadow); }
 .na-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block; }
 .na-curtain { position: absolute; inset: 0; display: flex; flex-direction: column; }
-.na-slice { flex: 1; transition: opacity .45s ease; opacity: 0; }
-.na-slice.on { opacity: 1; background: repeating-linear-gradient(135deg, oklch(0.87 0.01 90) 0 11px, oklch(0.80 0.012 90) 11px 22px); box-shadow: inset 0 -1px 0 var(--paper); }
+.na-slice { flex: 1; transition: opacity .45s ease; opacity: 1; background: repeating-linear-gradient(135deg, oklch(0.87 0.01 90) 0 11px, oklch(0.80 0.012 90) 11px 22px); box-shadow: inset 0 -1px 0 var(--paper); }
+.na-slice.off { opacity: 0; }
 .na-photo-tag { position: absolute; left: 10px; bottom: 10px; background: var(--ink); color: var(--paper); padding: 4px 9px; border-radius: 3px; font-size: 11px; letter-spacing: 0.04em; }
 .na-photo-win { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 16px 16px; background: linear-gradient(transparent, oklch(0.18 0.01 70 / 0.9)); display: flex; flex-direction: column; gap: 9px; align-items: flex-start; animation: fade .4s ease; }
 .na-win-name { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.02em; color: var(--paper); }
