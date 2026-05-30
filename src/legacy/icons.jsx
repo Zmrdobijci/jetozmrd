@@ -78,6 +78,10 @@ function Ico({ k, size = 18 }) {
       return <svg {...c}><path d="M6 3h8l4 4v14H6z" /><path d="M14 3v4h4" /><line x1="9" y1="12" x2="15" y2="12" /><line x1="9" y1="15.5" x2="15" y2="15.5" /></svg>;
     case 'pin':
       return <svg {...c}><path d="M12 21s7-6.3 7-11a7 7 0 1 0-14 0c0 4.7 7 11 7 11z" /><circle cx="12" cy="10" r="2.4" /></svg>;
+    case 'bolt': // blesk — nejsilnější výkon
+      return <svg {...c}><path d="M13 2.5 5 13.5h6l-1 8 8-11h-6z" /></svg>;
+    case 'dfens': // štít — D-FENS / obrana
+      return <svg {...c}><path d="M12 3l7 2.7v5.3c0 4.4-3 7.4-7 8.7-4-1.3-7-4.3-7-8.7V5.7z" /><path d="M9 11.5l2 2 4-4" /></svg>;
     default:
       return <svg {...c}><circle cx="12" cy="12" r="8" /></svg>;
   }

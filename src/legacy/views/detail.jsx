@@ -1,6 +1,6 @@
 /* DETAIL — profil politika: 6 dimenzí + skóre + citace */
 function Detail({ go, id }) {
-  const { byId, DIMENSIONS } = window.ZMRD;
+  const { byId, DIMENSIONS, dfensById } = window.ZMRD;
   const p = byId[id];
   if (!p) return <div className="view wrap"><p>Profil nenalezen.</p></div>;
 
@@ -32,6 +32,13 @@ function Detail({ go, id }) {
             </div>
           </div>
 
+          {p.categoryReason && (
+            <div className="catreason">
+              <div className="kicker">Proč tahle kategorie</div>
+              <p>{p.categoryReason}</p>
+            </div>
+          )}
+
           <ScorePanel person={p} onJump={jump} />
 
           {p.dictum && (
@@ -45,6 +52,16 @@ function Detail({ go, id }) {
 
         {/* PRAVÝ SLOUPEC — nálezy */}
         <div className="detail-right">
+          {p.highlight && (
+            <div className="highlight highlight-lead">
+              <div className="highlight-icon"><Ico k="bolt" size={22} /></div>
+              <div className="highlight-body">
+                <div className="kicker">Nejsilnější zmrdovský výkon</div>
+                <p>{p.highlight}</p>
+              </div>
+            </div>
+          )}
+
           {litDims.length > 0 ? (
             <React.Fragment>
               <div className="findings-head">
@@ -101,6 +118,29 @@ function Detail({ go, id }) {
                   </div>
                 ))}
               </div>
+            </div>
+          )}
+
+          {p.dfens && p.dfens.length > 0 && (
+            <div className="dfens-block">
+              <div className="dfens-head">
+                <Ico k="dfens" size={18} />
+                <div className="kicker">D-FENS znaky · {p.dfens.length} z 10</div>
+              </div>
+              <ul className="dfens-list">
+                {p.dfens.map((s) => {
+                  const meta = dfensById[s.n];
+                  return (
+                    <li className="dfens-item" key={s.n}>
+                      <span className="dfens-n mono">{s.n}</span>
+                      <span className="dfens-text">
+                        <strong>{meta ? meta.label : ''}</strong>
+                        {s.why ? ' — ' + s.why : ''}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           )}
 

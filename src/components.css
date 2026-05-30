@@ -230,6 +230,29 @@
 .clean-item span:nth-child(2) { flex: 1; }
 .clean-ok { font-size: 11px; color: var(--clean); letter-spacing: 0.08em; }
 
+/* důvod kategorie — pod dictem v levém sloupci */
+.catreason { border-top: 1px solid var(--line); padding-top: 16px; }
+.catreason .kicker { margin-bottom: 8px; }
+.catreason p { margin: 0; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+
+/* nejsilnější zmrdovský výkon — signal callout v pravém sloupci */
+.highlight { display: flex; gap: 16px; align-items: flex-start; margin-top: 26px; padding: 22px; border: 1px solid var(--signal-tint2); border-radius: var(--radius); background: var(--signal-tint); }
+.highlight-lead { margin-top: 0; margin-bottom: 26px; }
+.highlight-icon { color: var(--signal); flex: none; width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--paper); border: 1.5px solid var(--signal); }
+.highlight-body { flex: 1; min-width: 0; }
+.highlight .kicker { color: var(--signal-ink); margin-bottom: 8px; }
+.highlight p { margin: 0; font-size: 16px; line-height: 1.5; color: var(--ink); }
+
+/* D-FENS znaky — analytický footer pravého sloupce */
+.dfens-block { margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--line); }
+.dfens-head { display: flex; align-items: center; gap: 10px; color: var(--ink-soft); margin-bottom: 14px; }
+.dfens-head > svg { color: var(--ink-soft); flex: none; }
+.dfens-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.dfens-item { display: flex; gap: 12px; align-items: flex-start; padding: 11px 14px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+.dfens-n { flex: none; width: 22px; height: 22px; margin-top: 1px; display: grid; place-items: center; background: var(--ink); color: var(--paper); border-radius: 50%; font-size: 11px; font-weight: 700; }
+.dfens-text { font-size: 14.5px; color: var(--ink-soft); line-height: 1.45; }
+.dfens-text strong { font-family: var(--font-display); color: var(--ink); font-weight: 600; }
+
 /* ============================================================
    HLEDAT
    ============================================================ */

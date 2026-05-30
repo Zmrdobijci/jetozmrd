@@ -27,6 +27,22 @@
       lit: 'Zbabělost doložena.', clean: 'Odpovědnosti se nevyhýbá.' },
   ];
 
+  // ---- D-FENS taxonomie zmrda (10 znaků, dfens-cz.com 2001) — analytický druhý filtr ----
+  const DFENS = [
+    { n: 1,  label: 'Rád tlachá' },
+    { n: 2,  label: 'Vysává cizí zásluhy' },
+    { n: 3,  label: 'Líže kliky' },
+    { n: 4,  label: 'Nekonzistentní' },
+    { n: 5,  label: 'Neumí s lidmi' },
+    { n: 6,  label: 'Hraje tvrdě zezadu' },
+    { n: 7,  label: 'Neudělá nic pořádně' },
+    { n: 8,  label: 'Dbá na image' },
+    { n: 9,  label: 'Hraje na body' },
+    { n: 10, label: 'Kolektivní' },
+  ];
+  const dfensById = {};
+  DFENS.forEach((d) => { dfensById[d.n] = d; });
+
   // ---- defaultní nálezy + citace pro dimenze (použito u kandidátů bez override) ----
   const PHRASE = {
     lze:        () => ({ text: 'Demagog.cz eviduje opakované nepravdivé či zavádějící výroky.',
@@ -115,6 +131,55 @@
                   src: [S('mediální archiv', 'Výroky vůči novinářům', 'https://www.irozhlas.cz/')] },
         zbabelost: { text: 'V kauze Čapí hnízdo přenesení dotace na rodinné příslušníky; vyhýbání se osobní odpovědnosti.',
                   src: [S('mediální archiv', 'Čapí hnízdo — rodinní příslušníci', 'https://www.irozhlas.cz/')] },
+      },
+    }),
+    person({
+      id: 'schillerova', name: 'Alena Schillerová', party: 'ANO', role: 'expministryně financí, místopředsedkyně klubu',
+      scope: 'celostátní',
+      dictum: 'Méně viditelná verze systémového zmrdství: žádná exhibice, jen rodinné finance, státní informace na dosah a fiskální morálka, která platí vždycky jen pro druhé.',
+      lit: ['lze', 'penize', 'konzistence', 'toxicita', 'zbabelost'],
+      category: 'Systémový zmrd',
+      categoryReason: 'Není exhibicionistka jako Turek — funguje tiše a efektivně. Kombinuje rodinné finanční toky, blízkost k neveřejným státním informacím a selektivní fiskální morálku. Učebnicový produkt ekosystému ANO — proto Systémový, ne Populistický.',
+      highlight: 'Zeť David Rusňák — miliardář a bývalý sponzor ANO — se přiznal k objednávání lustrací z neveřejných policejních databází; jeho trestní stíhání bylo podmíněně zastaveno týden předtím, než se Schillerová stala ministryní financí. K trestním kauzám dvou příbuzných sama tvrdí, že „o tom neví vůbec nic".',
+      dfens: [
+        { n: 3,  why: 'Babišova věrná — jiná tvář ke šéfovi než navenek.' },
+        { n: 6,  why: 'Tiché těžení z blízkosti k neveřejným informacím (kauza FAU).' },
+        { n: 8,  why: 'Hlásá rozpočtovou odpovědnost, jako ministryně dělá pravý opak.' },
+        { n: 10, why: 'Pevná součást konglomerátu ANO — účelová loajalita.' },
+      ],
+      overrides: {
+        lze: { text: 'Demagog.cz z 159 ověřených výroků eviduje 18 nepravdivých a 22 zavádějících — např. nepravdivé tvrzení o chybějících zákonných přílohách rozpočtu 2026 a zavádějící dataci zavedení EET.',
+                  src: [S('demagog.cz', 'Výroky Aleny Schillerové — hodnocení', 'https://demagog.cz/politici/alena-schillerova-495')] },
+        penize: { text: 'Ministerstvo financí pod jejím vedením zaplatilo 1,93 mil. Kč ze státních peněz fotografovi a kameramanovi pečujícím o její osobní Instagram a Facebook (policie kauzu odložila, přezkoumává státní zástupce). Firma Bika manžela, kde působí i syn, v rozporu se zákonem nezveřejnila účetní závěrku se zatajeným vkladem 13 mil.',
+                  src: [S('iROZHLAS', 'Propagace na sítích za 1,93 mil. ze státních peněz', 'https://www.irozhlas.cz/zpravy-domov/schillerova-fotky-propagace-instagram-policie-trestni-oznameni_2205201522_elev'), S('Neovlivní', 'Zatajených 13 milionů — firma manžela Bika', 'https://neovlivni.cz/zatajenych-13-milionu-tak-podnika-manzel-schillerove/')] },
+        prace: { text: 'Jediná čistá osa — jako ministryně i předsedkyně klubu vykazovala vysokou aktivitu.' },
+        konzistence: { text: 'Jako ministryně hájila schodek 310 mld jako neporušení zákona o rozpočtové odpovědnosti (na jehož přijetí se ANO podílelo) a vinu svalovala na minulou vládu; v opozici týmž metrem označovala rozpočty Stanjury za „nepravdivé a nerealistické". Národní rozpočtová rada její rozpočet označila za bezprecedentní.',
+                  src: [S('Echo24', 'Schodek 310 mld — zákon prý neporušila', 'https://www.echo24.cz/a/HXKtq/zpravy-ekonomika-rozpocet-zakon-neporusil-rika-schillerova-presto-chce-zmenu'), S('ČeskéNoviny', 'Rozpočtová rada: nesplní zásady odpovědnosti', 'https://www.ceskenoviny.cz/zpravy/rada-rozpocet-asi-nesplni-zasady-odpovednosti-je-to-bezprecedentni/2772495')] },
+        toxicita: { text: 'Doložená dehonestující rétorika vůči vládě a oponentům — o jmenování ministryně řekla, že „politici si podali ruku s mafií", schůzi ke kampeličce přirovnala k „devadesátkám v Bogotě".',
+                  src: [S('CNN Prima', '„Podali si ruku s mafií"', 'https://cnn.iprima.cz/schillerova-fialovi-ministri-si-podali-ruku-s-mafii-proc-nema-ze-jmenovani-decroix-radost-477214'), S('Blesk', '„Jako devadesátky v Bogotě"', 'https://www.blesk.cz/clanek/zpravy-politika/783400/ano-narazilo-se-schuzi-ke-kampelicce-kde-mel-penize-fiala-jako-devadesatky-v-bogote-hrimala-schillerova.html')] },
+        zbabelost: { text: 'V kauze „zakleknutí" na firmu FAU u soudu jako svědkyně vypověděla, že o neveřejné informace z živého daňového řízení „nežádala" a „není si toho vědoma"; k trestním kauzám zetě a dalšího příbuzného (vynášení policejních spisů) uvedla, že „o tom neví vůbec nic". Osobní odpovědnost nevyvodila.',
+                  src: [S('iROZHLAS', '„Nejsem si toho vědoma" — výpověď v kauze FAU', 'https://www.irozhlas.cz/zpravy-domov/nejsem-si-toho-vedoma-schillerova-u-soudu-vypovedela-ze-si-informace-o-fau_2406241647_kma'), S('Seznam Zprávy', 'Kšefty s policejními spisy a rodina Schillerové', 'https://www.seznamzpravy.cz/clanek/domaci-kauzy-kauza-kseftu-s-policejnimi-spisy-ma-dalsi-spojnici-s-rodinou-schillerove-228044')] },
+      },
+    }),
+    person({
+      id: 'havlicek', name: 'Karel Havlíček', party: 'ANO', role: 'expvicepremiér, exministr průmyslu a dopravy',
+      scope: 'celostátní',
+      dictum: 'Není architekt zmrdství, je jeho spolehlivý vykonavatel — jenže vykonavatel s vlastním dotačním ocasem a ochotou hrát si s národní bezpečností.',
+      lit: ['penize', 'konzistence'],
+      category: 'Hraniční případ',
+      categoryReason: 'Havlíček není architekt zmrdství — je jeho spolehlivý vykonavatel. Vlastní dotační minulost a kalkul kolem Rosatomu ho drží nad čistou nulou, ale chybí mu systém i iniciativa Babiše či tichý profit Schillerové. Technokrat v nesprávném dresu — proto jen hraniční, ne plnokrevný.',
+      highlight: 'Rosatom na Dukovany. Tajné služby (BIS, ÚZSI, Vojenské zpravodajství, NÚKIB) jednotně varovaly, opozice žádala rezignaci — Havlíček tlačil dál a o bezpečnostním dotazníku pro ruskou firmu rozhodl na poslední chvíli bez souhlasu vlády. Otočil teprve když atentát ve Vrběticích pokračování znemožnil. Není to přesvědčení — je to politická kalkulace s národní bezpečností jako vstupenkou.',
+      dfens: [
+        { n: 3, why: 'Babišův loajalista — veřejně hájil střet zájmů svého šéfa.' },
+        { n: 8, why: 'Prezentuje se jako odborník-technokrat, rozhoduje ale politicky.' },
+        { n: 9, why: 'Prosazování proti jednotnému varování expertů jako mocenské gesto.' },
+      ],
+      overrides: {
+        penize: { text: 'Investigativní reportáže (Reportér magazín) dokumentují jeho roli investora a člena představenstva firem napojených na dotační kauzy — mj. Technistone v době podání dotace později řešené jako podvod a projekt kmenových buněk nabízející neúčinnou léčbu nevyléčitelně nemocným. Opakovaně veřejně hájil střet zájmů A. Babiše a čerpání dotací Agrofertem.',
+                  src: [S('Reportér magazín', '50 milionů je pryč — dotační podvod, v němž se Havlíček objevuje', 'https://reportermagazin.cz/73103/50-milionu-je-navzdy-pryc-pribeh-dotacniho-podvodu-v-nemz-se-dvakrat-objevuje-karel-havlicek/'), S('iROZHLAS', 'Obhajoba střetu zájmů Babiše', 'https://www.irozhlas.cz/zpravy-domov/karel-havlicek-stret-zajmu-evropsky-soudni-dvur-rezoluce-evropskeho-parlamentu_2106131358_tzr')] },
+        konzistence: { text: 'V tendru na dostavbu Dukovan měsíce prosazoval účast ruského Rosatomu navzdory jednotnému varování tajných služeb; o bezpečnostním dotazníku rozhodl na poslední chvíli bez souhlasu vlády a bez vědomí vládního zmocněnce. Otočil teprve po odhalení ruské stopy ve Vrběticích.',
+                  src: [S('Transparency International', 'Chaotický tendr na Dukovany ohrožuje bezpečnost ČR', 'https://www.transparency.cz/chaoticky-a-netransparentni-tendr-na-dukovany-ohrozuje-bezpecnostni-i-ekonomicke-zajmy-cr-ministr-havlicek-prosazuje-nezakonnou-vyjimku/'), S('Aktuálně.cz', 'Havlíček tendr změnil, aby v něm udržel Rosatom', 'https://zpravy.aktualne.cz/domaci/jaderny-lobbista-havlicek-tendr-na-dostavbu-dukovan-zmenil/r~4786f7c417b611ecbc3f0cc47ab5f122/')] },
+        prace: { text: 'Bez záznamu — spíše přetížen třemi funkcemi najednou než absentér.' },
       },
     }),
     person({
@@ -362,7 +427,7 @@
   };
 
   window.ZMRD = {
-    DIMENSIONS, OBVODY, obvodById, HEADLINERS, SENAT, ALL, byId,
+    DIMENSIONS, DFENS, dfensById, OBVODY, obvodById, HEADLINERS, SENAT, ALL, byId,
     candidatesForObvod, obvodHeat, krajHeat, categoryFor, tier, EGGS,
   };
 })();
