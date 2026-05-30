@@ -29,12 +29,14 @@ function AiZmrdolog({ go, open }) {
     }
     const lit = DIMENSIONS.filter((d) => person.dims[d.key].lit);
     const score = person.score === null ? 'šedá zóna' : person.score + '/6';
-    const rozbor = lit.length
-      ? 'Svítí ' + lit.length + ' z šesti os — ' + lit.map((d) => {
-          const src = [...new Set(person.dims[d.key].sources.map((s) => s.p))];
-          return d.label.toLowerCase() + (src.length ? ' (' + src.join(', ') + ')' : '');
-        }).join(', ') + '. Detaily a citace v doloženém profilu.'
-      : 'Žádná z šesti os není doložena — a bez důkazu nesvítíme.';
+    const osy = lit.map((d) => d.label.toLowerCase());
+    // ROZBOR vede hlasem (categoryReason — proč právě tahle typologie) a uzavře
+    // ho věcný výčet rozsvícených os. Suché je jen to, co je doložené.
+    const rozbor = person.categoryReason
+      ? person.categoryReason + (osy.length ? ' Rozsvícené osy: ' + osy.join(', ') + '.' : '')
+      : (osy.length
+          ? 'Svítí ' + osy.length + ' z šesti os: ' + osy.join(', ') + '. Detaily a citace v doloženém profilu.'
+          : 'Žádná z šesti os není doložena — a bez důkazu nesvítíme.');
     const pointa = person.dictum || (lit.length >= 4
       ? 'Vzorec je čitelný a doložený. Žádný dojem, jen záznam.'
       : 'Zatím spíš jednotlivosti než vzorec — sledujeme dál.');
