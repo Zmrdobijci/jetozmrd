@@ -1548,6 +1548,32 @@
     }),
   ];
 
+  // Doplň celou kandidátku obvodů 2026 (zdroj: senat-kandidati.js). Kandidáti, které
+  // zmrdometr ještě neprověřil, se přidají jako Šedá zóna — mapa tak ukáže kompletní
+  // slate obvodu, ne jen oskórované. Jakmile někoho oskórujeme (přidáme výš do SENAT),
+  // jeho duplicitní šedý stub se vynechá (shoda jméno + obvod).
+  (function mergeKandidati() {
+    const roster = (typeof window !== 'undefined' && window.SENAT_KANDIDATI_2026) || [];
+    if (!roster.length) return;
+    const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+      .replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(Boolean);
+    const subset = (a, b) => a.length && a.every((t) => b.includes(t));
+    const scored = SENAT.map((p) => ({ obvod: p.obvod, toks: norm(p.name) }));
+    roster.forEach((c) => {
+      const ct = norm(c.name);
+      const exists = scored.some((s) => s.obvod === c.obvod && subset(ct, s.toks));
+      if (exists) return;
+      SENAT.push(person({
+        id: 'kand-' + c.obvod + '-' + c.num,
+        name: c.name, party: c.party,
+        role: 'kandidát/ka do Senátu · obvod ' + c.obvod + (c.mesto ? ' (' + c.mesto + ')' : ''),
+        scope: 'senát', obvod: c.obvod, gray: true,
+        categoryReason: 'Kandidát/ka do Senátu' + (c.job ? ' (' + c.job + ')' : '') + '. Zmrdometr zatím neprověřil — šedá zóna do doložení faktů.',
+        lit: [],
+      }));
+    });
+  })();
+
   const ALL = HEADLINERS.concat(SENAT);
   const byId = {};
   ALL.forEach((p) => { byId[p.id] = p; });
