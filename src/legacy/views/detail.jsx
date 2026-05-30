@@ -29,6 +29,7 @@ function Detail({ go, id }) {
               <div className="detail-party mono">{p.party} · {p.scope === 'senát' ? 'kandidát do Senátu' : p.role}</div>
               <h1 className="detail-name">{p.name}</h1>
               {p.scope !== 'senát' && <div className="detail-role">{p.role}</div>}
+              {p.category && <div className={'detail-cat ' + p.tier}>{p.category}</div>}
             </div>
           </div>
 
