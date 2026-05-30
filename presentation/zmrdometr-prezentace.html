@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Zmrdometr — prezentace projektu · Hackni Politiku</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&family=Public+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:oklch(0.985 0.006 95);
+    --paper-2:oklch(0.955 0.008 95);
+    --paper-3:oklch(0.925 0.010 95);
+    --ink:oklch(0.205 0.012 70);
+    --ink-soft:oklch(0.435 0.012 70);
+    --ink-faint:oklch(0.605 0.010 80);
+    --line:oklch(0.875 0.010 90);
+    --line-2:oklch(0.815 0.012 88);
+    --signal:oklch(0.555 0.205 27);
+    --signal-ink:color-mix(in oklch, var(--signal), black 20%);
+    --signal-tint:color-mix(in oklch, var(--signal) 10%, var(--paper));
+    --clean:oklch(0.560 0.105 150);
+    --font-display:'Space Grotesk',system-ui,sans-serif;
+    --font-body:'Public Sans',system-ui,sans-serif;
+    --font-mono:'Space Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--paper-3);color:var(--ink);font-family:var(--font-body);}
+  h1,h2,h3,h4{font-family:var(--font-display);font-weight:700;line-height:1.03;letter-spacing:-0.02em;margin:0;text-wrap:balance;}
+  p{margin:0;text-wrap:pretty;}
+  .mono{font-family:var(--font-mono);}
+  .ph{color:var(--signal-ink);background:var(--signal-tint);border:1px dashed var(--signal);border-radius:3px;padding:0 5px;font-family:var(--font-mono);font-size:0.82em;white-space:nowrap;}
+
+  /* ---------- slide canvas: A4 landscape ---------- */
+  @page{ size:297mm 210mm; margin:0; }
+  .slide{
+    position:relative;
+    width:297mm; height:210mm;
+    background:var(--paper);
+    padding:18mm 20mm 16mm;
+    margin:0 auto;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+    page-break-after:always; break-after:page;
+  }
+  .slide:last-child{ page-break-after:auto; }
+  @media screen{
+    body{padding:24px 0;}
+    .slide{margin:0 auto 22px;box-shadow:0 2px 6px rgba(40,30,20,.08),0 18px 50px rgba(40,30,20,.10);}
+  }
+
+  /* ---------- shared chrome ---------- */
+  .kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);}
+  .signalk{color:var(--signal);}
+  .slide-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:22px;}
+  .brand{display:flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:15px;letter-spacing:-.01em;}
+  .brand em{color:var(--signal);font-style:normal;}
+  .mark{width:20px;height:20px;border:2px solid var(--ink);border-radius:50%;position:relative;flex:none;}
+  .mark::after{content:"";position:absolute;left:50%;top:50%;width:2px;height:9px;background:var(--signal);transform:translate(-50%,-90%) rotate(38deg);transform-origin:bottom center;border-radius:2px;}
+  .pagenum{font-family:var(--font-mono);font-size:11px;color:var(--ink-faint);}
+  .slide-foot{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:.04em;}
+
+  h2.title{font-size:40px;margin:6px 0 14px;}
+  .sub{font-size:17px;color:var(--ink-soft);max-width:90%;}
+
+  /* ---------- cover ---------- */
+  .cover{justify-content:center;}
+  .cover-mark{width:64px;height:64px;border:4px solid var(--ink);border-radius:50%;position:relative;margin-bottom:26px;}
+  .cover-mark::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:26px;background:var(--signal);transform:translate(-50%,-92%) rotate(38deg);transform-origin:bottom center;border-radius:3px;}
+  .cover h1{font-size:96px;line-height:.92;}
+  .cover h1 em{color:var(--signal);font-style:normal;}
+  .cover .pitch{font-size:23px;color:var(--ink-soft);max-width:760px;margin-top:26px;line-height:1.35;}
+  .cover-tags{margin-top:30px;display:flex;gap:10px;flex-wrap:wrap;}
+  .tag{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:999px;padding:6px 14px;color:var(--ink-soft);}
+  .tag.sig{border-color:var(--signal);color:var(--signal-ink);background:var(--signal-tint);}
+
+  /* ---------- grids & lists ---------- */
+  .cols2{display:grid;grid-template-columns:1fr 1fr;gap:14px 34px;}
+  .cols3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .card{border:1px solid var(--line);border-radius:5px;background:var(--paper);padding:16px 18px;}
+  .card h3{font-size:18px;margin-bottom:6px;}
+  .card p{font-size:13.5px;color:var(--ink-soft);line-height:1.45;}
+  .num{font-family:var(--font-mono);color:var(--signal);font-size:13px;}
+
+  .biglist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;}
+  .biglist li{display:flex;gap:16px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);}
+  .biglist li:last-child{border-bottom:0;}
+  .biglist .n{font-family:var(--font-mono);color:var(--signal);font-size:14px;flex:none;width:30px;}
+  .biglist .t{font-family:var(--font-display);font-weight:700;font-size:19px;letter-spacing:-.02em;}
+  .biglist .d{font-size:14px;color:var(--ink-soft);display:block;margin-top:2px;}
+
+  .team{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;}
+  .trow{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);}
+  .trow .role{font-family:var(--font-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);}
+  .trow .who{font-family:var(--font-display);font-weight:700;font-size:18px;text-align:right;}
+
+  .lead{font-size:21px;line-height:1.4;color:var(--ink);font-family:var(--font-display);font-weight:500;letter-spacing:-.01em;}
+  .lead .hot{color:var(--signal);}
+  .body p{font-size:15.5px;color:var(--ink-soft);line-height:1.55;margin-bottom:.7em;}
+  .body p strong{color:var(--ink);}
+
+  .links{display:flex;flex-direction:column;gap:12px;}
+  .linkrow{display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:5px;padding:16px 20px;background:var(--paper);}
+  .linkrow .lk{font-family:var(--font-mono);font-size:12px;color:var(--ink-faint);width:120px;flex:none;letter-spacing:.05em;text-transform:uppercase;}
+  .linkrow .lv{font-family:var(--font-display);font-weight:700;font-size:20px;}
+  .linkrow .lv span{color:var(--signal);}
+
+  .handover{background:var(--signal-tint);border:1px solid var(--signal);border-radius:6px;padding:20px 24px;margin:6px 0 18px;}
+  .handover .big{font-family:var(--font-display);font-weight:700;font-size:26px;color:var(--signal-ink);letter-spacing:-.02em;line-height:1.1;}
+  .handover .dm{font-family:var(--font-mono);font-size:13px;color:var(--signal-ink);margin-top:6px;letter-spacing:.04em;}
+
+  .closing{justify-content:center;text-align:center;align-items:center;}
+  .closing .dictum{font-family:var(--font-display);font-weight:700;font-size:52px;letter-spacing:-.02em;max-width:900px;line-height:1.05;}
+  .closing .dictum em{color:var(--signal);font-style:normal;}
+  .closing .thx{font-size:18px;color:var(--ink-soft);margin-top:26px;max-width:680px;}
+</style>
+</head>
+<body>
+
+<!-- 01 · COVER -->
+<section class="slide cover">
+  <div class="cover-mark"></div>
+  <div class="kicker">Hackni Politiku · tech demonstrátor · alfa</div>
+  <h1>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</h1>
+  <p class="pitch">Volba politika smrsknutá na jedinou otázku — <strong>Je to zmrd?</strong> — postavená na veřejných, citovatelných faktech, ne na politickém šumu.</p>
+  <div class="cover-tags">
+    <span class="tag sig">jetozmrd.cz</span>
+    <span class="tag">Zmrdometr</span>
+    <span class="tag">6 os zmrdství</span>
+    <span class="tag">D-FENS metodika</span>
+    <span class="tag">Alfa · 2026</span>
+  </div>
+  <div class="slide-foot" style="position:absolute;left:20mm;right:20mm;bottom:14mm;">
+    <span>jetozmrd.cz</span><span>Prezentace projektu · Hackni Politiku</span>
+  </div>
+</section>
+
+<!-- 02 · TÝM -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">02</div>
+  </div>
+  <div class="kicker signalk">Tým &amp; role</div>
+  <h2 class="title">Kdo za tím stojí</h2>
+  <div class="team">
+    <div>
+      <div class="trow"><span class="role">Challenge owner</span><span class="who"><span class="ph">[DOPLŇ jméno]</span></span></div>
+      <div class="trow"><span class="role">Mission leader</span><span class="who"><span class="ph">[DOPLŇ — Giuliano Giannetti?]</span></span></div>
+      <div class="trow"><span class="role">Slack kanál</span><span class="who"><span class="ph">[DOPLŇ #kanál]</span></span></div>
+    </div>
+    <div>
+      <div class="trow"><span class="role">Tým</span><span class="who"><span class="ph">[DOPLŇ členové + role]</span></span></div>
+      <div class="trow"><span class="role">Děkujeme</span><span class="who"><span class="ph">[DOPLŇ]</span> + komunita Hackni Politiku</span></div>
+    </div>
+  </div>
+  <p class="sub" style="margin-top:24px;">Web vznikl v omezené časové dotaci jako tech demonstrátor — ukázat zábavnou formou, co je technologicky možné.</p>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Tým &amp; role</span></div>
+</section>
+
+<!-- 03 · PROBLÉM -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">03</div>
+  </div>
+  <div class="kicker signalk">Problém</div>
+  <h2 class="title">„Flood the zone."</h2>
+  <p class="lead" style="max-width:92%;">Politická scéna zaplavuje voliče <span class="hot">šumem</span> — kauzy, výroky, prohlášení, reakce na reakce. Volič se v tom utopí a rozhodnutí o charakteru politika je kognitivně neúnosné.</p>
+  <div class="cols3" style="margin-top:30px;">
+    <div class="card"><div class="num">01</div><h3>Šum vítězí</h3><p>Kdo zaplaví prostor, ten řídí pozornost. Fakta se ztrácí v hluku.</p></div>
+    <div class="card"><div class="num">02</div><h3>Chybí měřítko</h3><p>Neexistuje jednoduché, faktické a opakovatelné měřítko charakteru.</p></div>
+    <div class="card"><div class="num">03</div><h3>My neřešíme šum</h3><p>Hodnotíme charakter. Volba se redukuje na jediné: <strong>Je to zmrd?</strong></p></div>
+  </div>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Problém, který řešíme</span></div>
+</section>
+
+<!-- 04 · CO JSME VYTVOŘILI -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">04</div>
+  </div>
+  <div class="kicker signalk">Co jsme vytvořili · kam jsme došli</div>
+  <h2 class="title">Alfa verze webu jetozmrd.cz</h2>
+  <div class="cols3">
+    <div class="card"><h3>6 os zmrdství</h3><p>Měřitelné osy (lže, cizí peníze, docházka, konzistence, toxicita, zbabělost) + D-FENS taxonomie jako druhý filtr.</p></div>
+    <div class="card"><h3>42 profilů politiků</h3><p>Foto, doložené nálezy a u každé rozsvícené osy citovatelný zdroj. Žádný výrok nestojí na dojmu.</p></div>
+    <div class="card"><h3>Wall of shame</h3><p>Žebříček a profil každého politika — zmrdovské výkony vylepené na nástěnku.</p></div>
+    <div class="card"><h3>Senátní mapa</h3><p>Koncentrace zmrdů po obvodech (zatím Praha — kandidáti ještě nejsou veřejní).</p></div>
+    <div class="card"><h3>Naked Attraction</h3><p>Hravé představení politiků — zábavná forma bez milosrdného redakčního editu.</p></div>
+    <div class="card"><h3>AI zmrdolog + skill</h3><p>Stahovatelný skill (MD) reprodukuje celé hodnocení — metodika je auditovatelná.</p></div>
+  </div>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Co jsme postavili</span></div>
+</section>
+
+<!-- 05 · 5 VÝZEV -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">05</div>
+  </div>
+  <div class="kicker signalk">Co projekt otevírá</div>
+  <h2 class="title">Pět výzev, na které sahá</h2>
+  <ul class="biglist">
+    <li><span class="n">01</span><span><span class="t">Flood the zone</span><span class="d">Neřešíme šum, hodnotíme charakter. Volba se redukuje na jediné: Je to zmrd?</span></span></li>
+    <li><span class="n">02</span><span><span class="t">Wall of shame</span><span class="d">Každý politik má svoje zmrdovské výkony vylepené na nástěnku do konce života.</span></span></li>
+    <li><span class="n">03</span><span><span class="t">Volba do Senátu</span><span class="d">Senátní mapa ukazuje, kde je největší koncentrace zmrdů (zatím Praha).</span></span></li>
+    <li><span class="n">04</span><span><span class="t">Reprodukovatelný skill</span><span class="d">Metodika v MD = engine na obsah: D-FENS dikce, automatické psaní profilů, ověřování zdrojů (viz profil Babiše).</span></span></li>
+    <li><span class="n">05</span><span><span class="t">Naked Attraction</span><span class="d">Demo, jak zábavnou formou představit politiky. I osobnosti z hackatonu — bez milosrdného editu.</span></span></li>
+  </ul>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Pět výzev</span></div>
+</section>
+
+<!-- 06 · ODKAZY -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">06</div>
+  </div>
+  <div class="kicker signalk">Odkazy</div>
+  <h2 class="title">Mrkněte a osahejte</h2>
+  <div class="links">
+    <div class="linkrow"><span class="lk">Živá Alfa</span><span class="lv">jetozmrd<span>.cz</span></span></div>
+    <div class="linkrow"><span class="lk">Metodika</span><span class="lv">Stahovatelný skill — <span>SKILL.md</span></span></div>
+    <div class="linkrow"><span class="lk">Profil k ukázce</span><span class="lv">jetozmrd.cz <span>· Babiš</span> (ověřování zdrojů)</span></div>
+    <div class="linkrow"><span class="lk">Repo / odevzdatelné</span><span class="lv"><span class="ph">[DOPLŇ odkaz na repo / složku / video]</span></span></div>
+  </div>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Odkazy &amp; prototyp</span></div>
+</section>
+
+<!-- 07 · LESSONS LEARNED -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">07</div>
+  </div>
+  <div class="kicker signalk">Lessons learned</div>
+  <h2 class="title">Aha momenty</h2>
+  <div class="cols2" style="margin-top:6px;">
+    <div class="card"><h3>Skill = engine, ne dokument</h3><p>Reprodukovatelná metodika v MD nezůstala u hodnocení — píše obsah, profily i ověřuje zdroje.</p></div>
+    <div class="card"><h3>Zábava prodá fakta</h3><p>D-FENS dikce a Naked Attraction protáhnou citovatelná data tam, kam suchá analýza nedosáhne.</p></div>
+    <div class="card"><h3><span class="ph">[DOPLŇ tvůj aha #3]</span></h3><p><span class="ph">[DOPLŇ 1 věta]</span></p></div>
+    <div class="card"><h3><span class="ph">[DOPLŇ tvůj aha #4]</span></h3><p><span class="ph">[DOPLŇ 1 věta]</span></p></div>
+  </div>
+  <p class="sub" style="margin-top:18px;"><span class="ph">[Volitelně: doplň vlastní aha momenty — návrhy výše můžeš přepsat.]</span></p>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Lessons learned</span></div>
+</section>
+
+<!-- 08 · DALŠÍ KROKY -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">08</div>
+  </div>
+  <div class="kicker signalk">Další kroky</div>
+  <h2 class="title">Hledám nástupce</h2>
+  <div class="handover">
+    <div class="big">Hledám někoho, kdo projekt převezme a bude ho rozvíjet.</div>
+    <div class="dm">Pište do DM · jsem otevřen reálným výzvám — ale potřebuju vidět reálný push na distribuci.</div>
+  </div>
+  <div class="team">
+    <div>
+      <div class="trow"><span class="role">Pokračuje jako owner/leader</span><span class="who"><span class="ph">[DOPLŇ / hledá se]</span></span></div>
+      <div class="trow"><span class="role">Rozhodnutí končíme/pokračujeme</span><span class="who"><span class="ph">[DOPLŇ datum]</span></span></div>
+    </div>
+    <div>
+      <div class="trow"><span class="role">Plán nejbližší dny</span><span class="who" style="text-align:right;max-width:46%;"><span class="ph">[DOPLŇ]</span></span></div>
+      <div class="trow"><span class="role">Odevzdatelné</span><span class="who"><span class="ph">[DOPLŇ — nahráno do složky]</span></span></div>
+    </div>
+  </div>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Co bude po hackatonu</span></div>
+</section>
+
+<!-- 09 · MEDAILONEK -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">09</div>
+  </div>
+  <div class="kicker signalk">Medailonek do white paperu · ke zveřejnění</div>
+  <h2 class="title">Pro komunitu Hackni Politiku</h2>
+  <div class="body" style="max-width:96%;">
+    <p><strong>Zmrdometr (jetozmrd.cz)</strong> je tech demonstrátor, který bere nejhlučnější otázku české politiky a dává jí jeden řádek: <em>Je to zmrd?</em> Místo přihrávání dalšího šumu staví na veřejných, citovatelných datech — šest měřitelných os charakteru a klasická D-FENS taxonomie jako druhý filtr. Každá rozsvícená osa má v profilu odkaz na zdroj, takže výsledek není pomluva, ale auditovatelná datová analýza. V omezené časové dotaci vzniklo 42 profilů politiků s fotkami a doloženými nálezy, žebříček „wall of shame", senátní mapa koncentrace a hravá vrstva (Naked Attraction), která téma protáhne i tam, kam suchá fakta nedosáhnou.</p>
+    <p>Klíčový insight: hodnocení řídí <strong>stahovatelný skill</strong> — reprodukovatelná metodika, kterou si kdokoli ověří a spustí znovu. Stejná logika píše zábavný obsah (D-FENS dikce), generuje profily i ověřuje zdroje. Projekt ukazuje, že charakter veřejně činných osob jde měřit férově, transparentně a zábavně zároveň. <strong>Hledáme nástupce s tahem na branku a reálným plánem distribuce</strong> — engine je postavený, chce to ruce, které ho dostanou k voličům. <span class="ph">[DOPLŇ případně 1 větu navíc o tom, co od komunity potřebuješ]</span></p>
+  </div>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Medailonek · veřejné</span></div>
+</section>
+
+<!-- 10 · NICE TO HAVE -->
+<section class="slide">
+  <div class="slide-head">
+    <div class="brand"><span class="mark"></span>JE&nbsp;TO&nbsp;<em>ZMRD</em>?</div>
+    <div class="pagenum">10</div>
+  </div>
+  <div class="kicker signalk">Cesta · záseky · momenty do dějin</div>
+  <h2 class="title">Mimo protokol</h2>
+  <div class="cols3">
+    <div class="card"><h3>Jaká byla cesta</h3><p><span class="ph">[DOPLŇ krátký příběh — odkud kam jste se za hackathon dostali]</span></p></div>
+    <div class="card"><h3>Záseky &amp; potřeby</h3><p>Reálný push na distribuci a nástupce, který projekt dostane k voličům. Engine stojí, chybí dosah.</p></div>
+    <div class="card"><h3>Moment do dějin</h3><p>Naked Attraction bez milosrdného editu — Petr Minář, Faltýnek a Bláha. <span class="ph">[DOPLŇ další haluz]</span></p></div>
+  </div>
+  <p class="sub" style="margin-top:18px;">„Žádný milosrdný redakční edit. Tak se nechte překvapit."</p>
+  <div class="slide-foot"><span>jetozmrd.cz</span><span>Nice to have</span></div>
+</section>
+
+<!-- 11 · CLOSING -->
+<section class="slide closing">
+  <div class="cover-mark" style="margin:0 auto 24px;"></div>
+  <div class="dictum">Měříme, co jiní jen <em>tuší.</em></div>
+  <p class="thx">Díky Hackni Politiku za skvělou akci. Držím palce všem projektům — ať se daří. Engine je postavený; kdo ho chce dostat k voličům, ať píše do DM.</p>
+  <div class="cover-tags" style="justify-content:center;margin-top:30px;">
+    <span class="tag sig">jetozmrd.cz</span>
+    <span class="tag">DM pro převzetí</span>
+    <span class="tag">Alfa · 2026</span>
+  </div>
+</section>
+
+</body>
+</html>
