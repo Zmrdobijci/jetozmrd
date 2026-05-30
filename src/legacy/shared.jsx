@@ -66,7 +66,9 @@ function PersonCard({ person, onOpen, rank }) {
   return (
     <button className="pcard" onClick={() => onOpen(person.id)}>
       {rank != null && <span className="pcard-rank mono">{String(rank).padStart(2, '0')}</span>}
-      <span className="pcard-portrait portrait" aria-hidden="true">FOTO</span>
+      {person.photo
+        ? <img className="pcard-portrait pcard-photo" src={person.photo} alt={person.name} loading="lazy" style={person.photoPos ? { objectPosition: person.photoPos } : null} />
+        : <span className="pcard-portrait portrait" aria-hidden="true">FOTO</span>}
       <span className="pcard-body">
         <span className="pcard-top">
           <span className="pcard-name">{person.name}</span>
