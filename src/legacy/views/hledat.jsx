@@ -80,6 +80,9 @@ function Zebricek({ go }) {
         {ranked.map((p, i) => (
           <button className="ladder-row" key={p.id} onClick={() => go('detail', { id: p.id })}>
             <span className="ladder-rank mono">{String(i + 1).padStart(2, '0')}</span>
+            {p.photo
+              ? <img className="ladder-photo" src={p.photo} alt={p.name} loading="lazy" style={p.photoPos ? { objectPosition: p.photoPos } : null} />
+              : <span className="ladder-portrait portrait" aria-hidden="true">FOTO</span>}
             <span className="ladder-name">
               <span className="ladder-nm">{p.name}</span>
               <span className="ladder-party mono">{p.party} · {p.category}</span>
