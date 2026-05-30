@@ -586,6 +586,68 @@
         toxicita: { text: 'Jediný doložený incident: v roce 2013 mu Česká advokátní komora na stížnost kanceláře Šachta & Partners uložila pokutu 200 000 Kč za ostrá veřejná obvinění pronesená při protikorupční práci. Jednorázové profesní přestřelení během watchdog činnosti, nikoli vzorec dehonestace — osu proto nesvítíme.' },
       },
     }),
+    person({
+      id: 'zantovsky', name: 'Michael Žantovský', party: 'nestraník',
+      role: 'diplomat, ředitel Knihovny Václava Havla, exsenátor; kandidát v obvodu 21 (2. kolo 2020)',
+      scope: 'senát', obvod: 21,
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Michael_%C5%BDantovsk%C3%BD_%282022%29.jpg/500px-Michael_%C5%BDantovsk%C3%BD_%282022%29.jpg',
+      dictum: 'Havlův mluvčí, velvyslanec ve třech zemích a senátor už v 90. letech — kariéra strávená v diplomatických službách bez jediné doložené tečky. Zmrdometr nemá co rozsvítit.',
+      lit: [],
+      overrides: {
+        lze: { text: 'Demagog.cz eviduje jen několik ověřených výroků a žádný doložený vzorec nepravdivých či zavádějících tvrzení.' },
+        konzistence: { text: 'Od 90. let (senátor za ODA 1996–2002) drží konzistentní prozápadní a liberálně-konzervativní linii navázanou na odkaz Václava Havla; v roce 2020 kandidoval s podporou koalice TOP 09, ODS a STAN. Žádný doložený názorový veletoč.' },
+      },
+    }),
+    person({
+      id: 'smoljak', name: 'David Smoljak', party: 'STAN',
+      role: 'senátor za obvod 24 (Praha 9), scenárista a publicista',
+      scope: 'senát', obvod: 24,
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/David_Smoljak.jpg/500px-David_Smoljak.jpg',
+      dictum: 'Scenárista a publicista, který do Senátu přišel z kultury, ne z mocenských struktur — a za celý mandát si nevysloužil jedinou doloženou osu. Čistý štít.',
+      lit: [],
+      overrides: {
+        lze: { text: 'Demagog.cz u Smoljaka nevede profil s doloženým vzorcem nepravd; faktograficky čistá osa.' },
+        konzistence: { text: 'Dlouhodobě konzistentní občansko-liberální a prozápadní postoj; mandát získal a obhajuje za STAN s podporou Pirátů a TOP 09, bez doloženého obratu v klíčových postojích.' },
+      },
+    }),
+    person({
+      id: 'stehlik', name: 'Eduard Stehlík', party: 'ODS/KDU-ČSL',
+      role: 'vojenský historik, exředitel ÚSTR; kandidát v obvodu 24 (2. kolo 2020)',
+      scope: 'senát', obvod: 24,
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Senice_%E2%80%93_Silver_A_%E2%80%93_16_%28cropped%29.JPG/500px-Senice_%E2%80%93_Silver_A_%E2%80%93_16_%28cropped%29.JPG',
+      dictum: 'Vojenský historik, jehož nejostřejší kauza — spor s bývalými podřízenými z ÚSTR — uvázla v rovině neprokázaného tvrzení. Doloženou osu zmrdometr nenašel.',
+      lit: [],
+      overrides: {
+        toxicita: { text: 'Jako ředitel Ústavu pro studium totalitních režimů (2022–2023) čelil otevřenému dopisu 19 zaměstnanců, kteří mu vytýkali bossing a cenzuru. Stehlík obvinění odmítl; jím podanou žalobu na bývalé zaměstnance soud v listopadu 2023 zamítl. Tvrzení o bossingu zůstává neprokázané — osu proto nesvítíme.' },
+        lze: { text: 'Bez doloženého vzorce nepravdivých výroků v ověřovacích databázích.' },
+      },
+    }),
+    person({
+      id: 'nemcova', name: 'Miroslava Němcová', party: 'ODS',
+      role: 'senátorka za obvod 27 (Praha 1), expředsedkyně Poslanecké sněmovny',
+      scope: 'senát', obvod: 27,
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Miroslava_N%C4%9Bmcov%C3%A1_ofici%C3%A1ln%C3%AD_2020.jpg/500px-Miroslava_N%C4%9Bmcov%C3%A1_ofici%C3%A1ln%C3%AD_2020.jpg',
+      dictum: 'Ostrý jazyk vůči ruské agresi, který soud uznal za přípustnou politickou kritiku, a podíl nepravd pod hranicí soustavnosti — na rozsvícení osy to nestačí.',
+      lit: [],
+      overrides: {
+        lze: { text: 'Demagog.cz u Němcové z 92 ověřených výroků eviduje 8 nepravdivých a 9 zavádějících (vedle 65 pravdivých) — dílčí, nikoli převažující pochybení; pod hranicí soustavnosti, kterou svítíme.' },
+        toxicita: { text: 'V říjnu 2022 na sociální síti označila ruské agresory za \'parchanty\' a domácí přitakávače za \'pátou kolonu\'. Podané trestní oznámení skončilo zastavením stíhání a výrok byl posouzen jako přípustná politická kritika v kontextu války. Jednorázová ostrá polemika vůči vnějšímu agresorovi, nikoli vzorec dehonestace konkrétních osob — osu nesvítíme.' },
+      },
+    }),
+    person({
+      id: 'hampl', name: 'Václav Hampl', party: 'KDU-ČSL',
+      role: 'exsenátor (2014–2020), exrektor Univerzity Karlovy; kandidát v obvodu 27 (2. kolo 2020)',
+      scope: 'senát', obvod: 27,
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Prof._RNDr._V%C3%A1clav_Hampl%2C_DrSc.%282021%29.jpg/500px-Prof._RNDr._V%C3%A1clav_Hampl%2C_DrSc.%282021%29.jpg',
+      dictum: 'Bývalý rektor, jehož docházka na hlasování Senátu dvě volební období výrazně zaostávala za průměrem — jediná osa, kterou data jednoznačně rozsvěcují.',
+      lit: ['prace'],
+      overrides: {
+        prace: { text: 'Statistiky účasti na hlasování Senátu vykazují za období 2014–2016 účast 62,9 % a 2016–2018 účast 67,0 %, tedy výrazně pod obvyklým senátním průměrem; v dalším období se účast zvedla na 83,6 %. Dvě po sobě jdoucí období podprůměrné docházky jsou doložená.', src: [S('senát.cz', 'Statistika účasti na hlasování — Václav Hampl', 'https://www.senat.cz/informace/pro_media/statistiky/statistika_hlasovani.php?pid=280&obdobi=10'), S('kohovolit.eu', 'Hlasovací účast v Senátu', 'https://www.kohovolit.eu/')] },
+        lze: { text: 'Demagog.cz eviduje ze 17 ověřených výroků 4 nepravdivé — dílčí pochybení pod hranicí soustavnosti, osu nesvítíme.' },
+        toxicita: { text: 'V kampani 2020 se v obvodu objevil billboard s heslem o tom, že \'vysoká škola života nestačí\', mířený na chybějící vysokoškolské vzdělání protikandidátky Miroslavy Němcové. Jednorázový kampaňový osten ke konkrétnímu faktu, nikoli vzorec dehonestace — osu nesvítíme.' },
+        zbabelost: { text: 'Z rektorského působení na Univerzitě Karlově je doložena kritika jeho postupu v kauze kolem nemovitosti v Opletalově ulici (2013); jednorázová epizoda bez doloženého opakovaného vzorce vyhýbání se odpovědnosti — osu nesvítíme.' },
+      },
+    }),
   ];
 
   const ALL = HEADLINERS.concat(SENAT);
