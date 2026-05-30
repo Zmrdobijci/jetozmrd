@@ -40,7 +40,7 @@ web vykreslí — ne v textu okolo.
   "id": "slug-bez-diakritiky",
   "name": "Celé jméno",
   "party": "Strana / hnutí",
-  "role": "funkce, např. 'expministryně financí, místopředsedkyně klubu'",
+  "role": "funkce, např. 'ministryně financí a místopředsedkyně vlády'",
   "scope": "celostátní",
   "photo": null,
   "photoPos": null,
@@ -147,6 +147,19 @@ to ale není totéž jako „není rozsudek".
 
 ---
 
+## Aktuální politický kontext (ověř WebSearch — může být neaktuální)
+
+Funkce se mění; **role vždy ověř hledáním**, neber z paměti ani z této kotvy.
+Poslední známý stav (kalibrováno k 2026): po sněmovních volbách na podzim 2025
+vznikla **3. vláda Andreje Babiše** (ANO + SPD + Motoristé), jmenovaná 15. 12. 2025,
+důvěru dostala 15. 1. 2026.
+
+- **Vláda (ANO+SPD+Motoristé):** Babiš (premiér), Schillerová (ministryně financí, místopř. vlády), Havlíček (ministr průmyslu a obchodu, 1. místopř. vlády), Okamura (předseda Sněmovny), Turek (vládní zmocněnec — prezident odmítl jmenovat ministrem).
+- **Opozice (SPOLU + STAN + Piráti):** Fiala (expremiér, ODS), Rakušan (exministr vnitra, STAN), Pekarová Adamová (expředsedkyně Sněmovny, TOP 09), Bartoš a Hřib (Piráti).
+
+Než označíš někoho „premiér / ministr / ex-", potvrď aktuální funkci hledáním —
+tahle kotva stárne každou rekonstrukcí vlády.
+
 ## Kalibrace — kotvy z živé databáze
 
 Než přidělíš skóre, porovnej subjekt s těmito **referenčními headlinery**
@@ -163,7 +176,7 @@ Než přidělíš skóre, porovnej subjekt s těmito **referenčními headlinery
 | Karel Havlíček | 2/6 | Hraniční případ | penize, konzistence |
 | Petr Pavel | 1/6 | Jedna skvrna | konzistence |
 | Vít Rakušan | — (gray) | Manažerské selhání | — |
-| Petr Fiala | 0/6 | Slabý lídr (není zmrd) | — |
+| Petr Fiala | 1/6 | Slabý lídr (není zmrd) | konzistence |
 | Ivan Bartoš | 0/6 | Není zmrd | — |
 | Zdeněk Hřib | 0/6 | Není zmrd (má hrany) | — |
 
@@ -194,7 +207,9 @@ Score je kvantita, kategorie kvalita („jaký typ"). Zařaď do **jedné**:
 | **Populistický zmrd** | Vědomé lži jako nástroj; potřebuje nepřítele a krátkou paměť voličů |
 | **Oportunistický zmrd** | Mění přesvědčení podle situace / průzkumů |
 | **Hraniční případ** | 2–3 osy svítí, nebo sporné/dílčí důkazy (v `data.js` též `"Hraniční"`) |
-| **Není zmrd** | 0–1 osa; slabé vedení či odborné selhání ≠ zmrdství |
+| **Vohnout** | Pasivní protějšek zmrda — neiniciuje ani neprofituje, jen se ohýbá před mocí: hlasuje na povel, kryje vůdce, postoj mění shora. Definuje ho zbabělost + ohýbání (znak 3 líže kliky), ne vlastní systém. Typicky 1–3 osy (viz „Zmrd vs. vohnout") |
+| **Není zmrd** | 0–1 osa; slabé vedení či odborné selhání ≠ zmrdství. **0/6 = ani zmrd, ani vohnout** (vohnout potřebuje doložené ohýbání) |
+| **Anti-vohnout** | 0 os + **doložené postavení se moci** (vzdor nátlaku, kontrola mocných). Pozitivní opak vohnouta. Použij variantu `"Anti-vohnout (není zmrd)"` / `"(má hrany)"`. Příklady v `data.js`: Vystrčil, Němcová, Minář, Hřib, Bláha |
 
 Defaultní mapování ze score (když `category` nevyplníš): 0 `Není zmrd` · 1 `Jedna
 skvrna` · 2 `Hraniční případ` · 3 `Potvrzený zmrd` · 4 `Plnokrevný zmrd` ·
@@ -229,6 +244,34 @@ renderuje. Do `dfens` dávej znaky podle čísla `n`:
 Čím víc znaků a vyšší organizace, tím spíš **Systémový**. Otevřená provokace →
 **Exhibicionistický**. Lež jako nástroj → **Populistický**. Otáčení podle situace
 → **Oportunistický**.
+
+---
+
+## Zmrd vs. vohnout — dvě tváře téže taxonomie
+
+D-FENS optika nezná jen aktivního dravce. Zmrd a vohnout jsou dva póly téhož ekosystému:
+
+- **Zmrd** = aktivní dravec s přebujelým egem. Iniciuje, profituje, buduje. Cpe se tam, kam nepatří, nepřijatelnými metodami.
+- **Vohnout** = pasivní palivo zmrdího systému. Neiniciuje, neprofituje — jen se **ohýbá před mocí**: hlasuje, jak se řekne, kryje vůdce, postoj mění podle příkazu shora a vlastní odpovědnosti se zbaběle vyhýbá. Bez vohnoutů by systémový zmrd neměl koho ovládat.
+
+**Jak vohnouta poznáš (profil os + D-FENS znaků):**
+- **Jádro = znak 3 (líže kliky)** — jiná tvář k vůdci/vedení než k veřejnosti.
+- **zbabelost svítí** — vyhýbá se vlastní odpovědnosti, schovává se za stranu nebo vůdce.
+- **konzistence svítí formou ohýbání** — postoj nemění podle vlastní kalkulace (to je oportunista), ale podle toho, kam fouká od vedení.
+- **znak 10 (kolektivní)** jako řadový člen konglomerátu, ne jeho architekt.
+- Naopak typicky **NEsvítí penize** (nemá vlastní obohacovací schéma) ani **toxicita** (je submisivní, ne agresivní).
+
+**Dvě varianty — nehledej vohnouta jen u stran s vůdcem (pozor na optickou asymetrii):**
+- **Vohnout vůdcovský** (typicky ANO/SPD) — líže kliky jednomu silnému lídrovi, veřejně kryje jeho kauzy. *Příklad: Nacher — placený loajální obhájce Babišova střetu zájmů.*
+- **Vohnout koaliční** (typicky pravice bez silného vůdce) — neohýbá se před osobou, ale před vládní/stranickou linií: zradí vlastní programovou identitu kvůli setrvání ve vládě a zbaběle se vyhne odpovědnosti. *Příklad: Stanjura (ODS) — strana „rozpočtové odpovědnosti“, jejíž ministr hájil rekordní schodky a v opozici je atakuje.* **Stejný metr na obě strany:** když rozsvěcíš konzistenci levici za obhajobu schodků (Schillerová), musíš ji rozsvítit i pravici za totéž.
+
+**Hraniční testy (čím vohnout NENÍ):**
+- Iniciuje vlastní kauzy a profituje z nich → **zmrd**, ne vohnout. *Příklad: Havlíček — má jádro vohnouta (líže kliky Babišovi), ale vlastní dotační ocas a tlak na Rosatom proti varování tajných služeb ho překlápějí do Hraničního zmrda. „Vohnout s ocasem", který kategorii přerostl.*
+- Mění kabát podle vlastní výhody/průzkumů, ne na povel → **oportunistický zmrd**.
+- Je na vrcholu a neohýbá se před nikým — selhává vedením, ne poslušností → **slabý lídr / není zmrd**. *Příklad: Fiala — premiér bez nadřízeného; jeho jediná hrana je elektorální kalkul, ne ohýbání před mocí. Mimo osu vohnouta.*
+- Doložené osy nesvítí a žádný vzorec ohýbání → **Není zmrd** (čistý). Pokud se navíc moci doloženě **postavil** (Vystrčil — Tchaj-wan navzdory tlaku Pekingu a Zemana; Němcová, Minář), je to **anti-vohnout** — opak kategorie.
+
+**Skóre a render:** vohnout má typicky nízké zmrd-skóre (1–3), protože aktivní osy nesvítí — ale **„Vohnout" je kvalitativní kategorie, ne totéž co „Hraniční případ".** Hraniční = pár os, nejasné důkazy; Vohnout = jasný vzorec ohýbání před mocí. A **0/6 vohnout neexistuje** — bez doložené zbabělosti či ohýbání nesvítí nic a jde o čistého „Není zmrd". V `categoryReason` rozdíl obhaj.
 
 ---
 
@@ -290,7 +333,7 @@ konkrétního zdroje do `src`.
   "id": "schillerova",
   "name": "Alena Schillerová",
   "party": "ANO",
-  "role": "expministryně financí, místopředsedkyně klubu",
+  "role": "ministryně financí a místopředsedkyně vlády",
   "scope": "celostátní",
   "photo": null, "photoPos": null, "gallery": [], "obvod": null,
   "category": "Systémový zmrd",
@@ -330,7 +373,7 @@ Havlíček má dvě doložené osy a žádný systém, proto 2/6, ne 5/6.
   "id": "havlicek",
   "name": "Karel Havlíček",
   "party": "ANO",
-  "role": "expvicepremiér, exministr průmyslu a dopravy",
+  "role": "ministr průmyslu a obchodu, 1. místopředseda vlády",
   "scope": "celostátní",
   "photo": null, "photoPos": null, "gallery": [], "obvod": null,
   "category": "Hraniční případ",
