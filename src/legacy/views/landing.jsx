@@ -73,7 +73,7 @@ function Landing({ go, open }) {
         <div className="steps-grid">
           {[
             ['01', 'Zadáte region', 'Kliknete na svůj kraj v mapě. Ukážeme senátní kandidáty, které ve svém obvodu reálně volíte.'],
-            ['02', 'Změříme 6 dimenzí', 'Lže? Žije z cizích peněz? Chodí do práce? Drží slovo? Chová se toxicky? Je zbabělý?'],
+            ['02', 'Změříme 6 dimenzí', 'Lže? Žije z cizích peněz? Vyhýbá se práci? Je nekonzistentní? Chová se toxicky? Je zbabělý?'],
             ['03', 'Doložíme zdroji', 'Každý rozsvícený atribut má odkaz na veřejný zdroj — hlídačstát, Demagog, psp.cz, justice.cz. Žádné dojmy.'],
           ].map(([n, t, d]) => (
             <div className="step" key={n}>

@@ -137,8 +137,8 @@ nerenderuje. Při analýze ber 3 stupně a mapuj je takto:
 |------|--------|-------------------|----------------------|
 | **lze** | Lže prokazatelně? | Demagog/mediální archiv doloží opakované nepravdivé či zavádějící výroky | Ojedinělé/sporné → kontext do `text`, osu nesvítit |
 | **penize** | Žije z cizích peněz / dotací? | Doložené čerpání veřejných prostředků, dotace ve střetu zájmů, zakázky | Běžný plat za funkci ≠ 🔴 |
-| **prace** | Chodí do práce? | Záznamy psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast | Průměrná docházka → 🟢 |
-| **konzistence** | Je konzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích | Vývoj názoru s odůvodněním → 🟢 |
+| **prace** | Vyhýbá se práci? | Záznamy psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast | Průměrná docházka → 🟢 |
+| **konzistence** | Je nekonzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích | Vývoj názoru s odůvodněním → 🟢 |
 | **toxicita** | Chová se toxicky? | Doložené urážky, dehonestace, šikana, výhrůžky vůči konkrétním osobám | Ostrá, ale věcná polemika → 🟢 |
 | **zbabelost** | Je zbabělý? | Doložené vyhýbání se odpovědnosti, házení podřízených přes palubu | — |
 
