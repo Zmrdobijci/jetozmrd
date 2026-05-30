@@ -136,7 +136,7 @@
     }),
     person({
       id: 'schillerova', name: 'Alena Schillerová', party: 'ANO', role: 'expministryně financí, místopředsedkyně klubu',
-      scope: 'celostátní',
+      scope: 'celostátní', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Schillerov%C3%A1_Raku%C5%A1an_2023_%28cropped%29.jpg/500px-Schillerov%C3%A1_Raku%C5%A1an_2023_%28cropped%29.jpg',
       dictum: 'Méně viditelná verze systémového zmrdství: žádná exhibice, jen rodinné finance, státní informace na dosah a fiskální morálka, která platí vždycky jen pro druhé.',
       lit: ['lze', 'penize', 'konzistence', 'toxicita', 'zbabelost'],
       category: 'Systémový zmrd',
@@ -164,7 +164,7 @@
     }),
     person({
       id: 'havlicek', name: 'Karel Havlíček', party: 'ANO', role: 'expvicepremiér, exministr průmyslu a dopravy',
-      scope: 'celostátní',
+      scope: 'celostátní', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Karel_Havl%C3%AD%C4%8Dek_akademicky-snem-duben-2026_03_%28cropped%29.jpg/500px-Karel_Havl%C3%AD%C4%8Dek_akademicky-snem-duben-2026_03_%28cropped%29.jpg',
       dictum: 'Není architekt zmrdství, je jeho spolehlivý vykonavatel — jenže vykonavatel s vlastním dotačním ocasem a ochotou hrát si s národní bezpečností.',
       lit: ['penize', 'konzistence'],
       category: 'Hraniční případ',
@@ -176,8 +176,8 @@
         { n: 9, why: 'Prosazování proti jednotnému varování expertů jako mocenské gesto.' },
       ],
       overrides: {
-        penize: { text: 'Investigativní reportáže (Reportér magazín) dokumentují jeho roli investora a člena představenstva firem napojených na dotační kauzy — mj. Technistone v době podání dotace později řešené jako podvod a projekt kmenových buněk nabízející neúčinnou léčbu nevyléčitelně nemocným. Opakovaně veřejně hájil střet zájmů A. Babiše a čerpání dotací Agrofertem.',
-                  src: [S('Reportér magazín', '50 milionů je pryč — dotační podvod, v němž se Havlíček objevuje', 'https://reportermagazin.cz/73103/50-milionu-je-navzdy-pryc-pribeh-dotacniho-podvodu-v-nemz-se-dvakrat-objevuje-karel-havlicek/'), S('iROZHLAS', 'Obhajoba střetu zájmů Babiše', 'https://www.irozhlas.cz/zpravy-domov/karel-havlicek-stret-zajmu-evropsky-soudni-dvur-rezoluce-evropskeho-parlamentu_2106131358_tzr')] },
+        penize: { text: 'Jako ministr průmyslu devět dní před odchodem z resortu podepsal kompenzace za drahé energie čtyřem firmám Babišova holdingu Agrofert (Synthesia, Precheza, Deza, Lovochemie) v objemu zhruba 49,4 mil. Kč — poté, co je jeho náměstek Eduard Muřický odmítl kvůli střetu zájmů; šéf Transparency International Petr Leyer uvedl, že firmy na ně neměly nárok a Havlíček porušil zákon. Investigativní reportáže (Reportér magazín) dokumentují i jeho roli investora a člena představenstva firem napojených na dotační kauzy — mj. Technistone v době podání dotace později řešené jako podvod a projekt kmenových buněk nabízející neúčinnou léčbu nevyléčitelně nemocným.',
+                  src: [S('Seznam Zprávy', 'Šéf Transparency: Havlíček pomohl Agrofertu a porušil zákon', 'https://www.seznamzpravy.cz/clanek/domaci-babis-sef-transparency-havlicek-pomohl-agrofertu-a-porusil-zakon-197473'), S('Seznam Zprávy', 'Babišovy firmy žádaly o náhradu za drahou elektřinu, pomohl Havlíček', 'https://www.seznamzpravy.cz/clanek/domaci-politika-babisovy-firmy-zadaly-o-nahradu-za-drahou-elektrinu-pomohl-havlicek-197212'), S('Reportér magazín', '50 milionů je pryč — dotační podvod, v němž se Havlíček objevuje', 'https://reportermagazin.cz/73103/50-milionu-je-navzdy-pryc-pribeh-dotacniho-podvodu-v-nemz-se-dvakrat-objevuje-karel-havlicek/')] },
         konzistence: { text: 'V tendru na dostavbu Dukovan měsíce prosazoval účast ruského Rosatomu navzdory jednotnému varování tajných služeb; o bezpečnostním dotazníku rozhodl na poslední chvíli bez souhlasu vlády a bez vědomí vládního zmocněnce. Otočil teprve po odhalení ruské stopy ve Vrběticích.',
                   src: [S('Transparency International', 'Chaotický tendr na Dukovany ohrožuje bezpečnost ČR', 'https://www.transparency.cz/chaoticky-a-netransparentni-tendr-na-dukovany-ohrozuje-bezpecnostni-i-ekonomicke-zajmy-cr-ministr-havlicek-prosazuje-nezakonnou-vyjimku/'), S('Aktuálně.cz', 'Havlíček tendr změnil, aby v něm udržel Rosatom', 'https://zpravy.aktualne.cz/domaci/jaderny-lobbista-havlicek-tendr-na-dostavbu-dukovan-zmenil/r~4786f7c417b611ecbc3f0cc47ab5f122/')] },
         prace: { text: 'Bez záznamu — spíše přetížen třemi funkcemi najednou než absentér.' },
@@ -228,28 +228,6 @@
                   src: [S('kohovolit.eu', 'Politická historie', 'https://www.kohovolit.eu/')] },
         zbabelost: { text: 'Distancování se od vlastních kandidátů po vypuknutí skandálů.',
                   src: [S('mediální archiv', 'Distancování od kandidátů', 'https://www.irozhlas.cz/')] },
-      },
-    }),
-    person({
-      id: 'havlicek', name: 'Karel Havlíček', party: 'ANO',
-      role: 'exvicepremiér a exministr průmyslu a obchodu / dopravy, místopředseda hnutí ANO',
-      scope: 'celostátní', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Karel_Havl%C3%AD%C4%8Dek_akademicky-snem-duben-2026_03_%28cropped%29.jpg/500px-Karel_Havl%C3%AD%C4%8Dek_akademicky-snem-duben-2026_03_%28cropped%29.jpg',
-      dictum: 'Devět dní před odchodem z resortu stihl podepsat to, co jeho náměstek odmítl kvůli střetu zájmů — a pak v Bruselu hájil, že žádný střet zájmů neexistuje.',
-      lit: ['penize'],
-      overrides: {
-        penize: { text: 'Jako ministr průmyslu podepsal kompenzace za drahé energie čtyřem firmám z Babišova holdingu Agrofert (Synthesia, Precheza, Deza, Lovochemie) v celkové výši zhruba 49,4 mil. Kč. Podpisy provedl devět dní před svým odchodem z ministerstva poté, co je jeho náměstek Eduard Muřický odmítl kvůli obavám ze střetu zájmů. Ředitel Transparency International Petr Leyer uvedl, že firmy na kompenzace neměly podle zákona o střetu zájmů nárok a že Havlíček porušil zákon.', src: [S('mediální archiv', 'Seznam Zprávy: Šéf Transparency: Havlíček pomohl Agrofertu a porušil zákon', 'https://www.seznamzpravy.cz/clanek/domaci-babis-sef-transparency-havlicek-pomohl-agrofertu-a-porusil-zakon-197473'), S('mediální archiv', 'Seznam Zprávy: Babišovy firmy žádaly o náhradu za drahou elektřinu, pomohl Havlíček', 'https://www.seznamzpravy.cz/clanek/domaci-politika-babisovy-firmy-zadaly-o-nahradu-za-drahou-elektrinu-pomohl-havlicek-197212')] },
-        lze: { text: 'Demagog.cz u Havlíčka eviduje 15 výroků hodnocených jako nepravda a 4 jako zavádějící (vedle 93 pravdivých) — opakované, ale ne převažující nepravdivé výroky, např. o slibu výstavby plynových elektráren či o generaci letounů Gripen.' },
-        konzistence: { text: 'Opakovaně a kategoricky popíral existenci střetu zájmů Andreje Babiše, který evropské audity konstatovaly; postoj hájil i na jednání ministrů EU v Bruselu.' },
-      },
-    }),
-    person({
-      id: 'schillerova', name: 'Alena Schillerová', party: 'ANO',
-      role: 'ministryně financí, místopředsedkyně hnutí ANO, šéfka poslaneckého klubu',
-      scope: 'celostátní', photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Schillerov%C3%A1_Raku%C5%A1an_2023_%28cropped%29.jpg/500px-Schillerov%C3%A1_Raku%C5%A1an_2023_%28cropped%29.jpg',
-      dictum: 'U čísel, na nichž stojí její odbornost, sahá k nepravdě a zavádění natolik soustavně, že to už není přeřek, ale metoda.',
-      lit: ['lze'],
-      overrides: {
-        lze: { text: 'Demagog.cz u Schillerové eviduje 18 výroků hodnocených jako nepravda a 22 jako zavádějící (vedle 96 pravdivých) — soustavné nepravdivé a zavádějící výroky, typicky u rozpočtových a daňových dat, např. nepravdivé tvrzení o chybějících zákonných přílohách rozpočtu 2026 nebo zavádějící líčení historie zavedení EET.', src: [S('demagog.cz', 'Profil Aleny Schillerové — statistika ověřených výroků', 'https://demagog.cz/politici/alena-schillerova-495')] },
       },
     }),
     person({
