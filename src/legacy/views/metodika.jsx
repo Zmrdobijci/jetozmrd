@@ -10,6 +10,20 @@ function Metodika({ go }) {
     ['mediální archiv', 'doložené výroky a doložené kauzy z důvěryhodných médií'],
   ];
 
+  // 10 znaků zmrda podle D-FENS (zdroj: dfens-cz.com, 2001)
+  const dfensSigns = [
+    ['Rád tlachá', 'Půl hodiny řeči, nula závazku.'],
+    ['Vysává cizí zásluhy', 'Přivlastňuje si cizí práci, přebírá agendu.'],
+    ['Líže kliky', 'Jiná tvář k nadřízeným než k veřejnosti.'],
+    ['Nekonzistentní', 'Reaguje pokaždé jinak podle aktuální výhody.'],
+    ['Neumí s lidmi', 'Obklopuje se loajalisty, likviduje kritiky.'],
+    ['Hraje tvrdě zezadu', 'Intrikuje, těží z neveřejných informací, omezuje konkurenci.'],
+    ['Neudělá nic pořádně', '„Navrch huj, vespod fuj" — výsledky chybí.'],
+    ['Dbá na image', 'Sleduje, co je „in", pozici mění podle trendů.'],
+    ['Hraje na body', 'Potřebuje rozdrcení soupeře, ne řešení problému.'],
+    ['Kolektivní', 'Tvoří konglomeráty zmrdů — účelová spojenectví.'],
+  ];
+
   return (
     <div className="view metodika wrap">
       <header className="page-head">
@@ -56,6 +70,11 @@ function Metodika({ go }) {
             </div>
           ))}
         </div>
+        <p className="meth-dims-note">
+          Osu toxicity kalibrujeme i proti <strong>Dignity Indexu</strong>{' '}
+          (<a href="https://www.dignity.us/index" target="_blank" rel="noopener noreferrer">dignity.us</a>) —
+          škále míry kontemptu vs. důstojnosti ve veřejném projevu. Ukazuje, že toxicita není měřena „od oka".
+        </p>
       </section>
 
       <div className="meth-pillars">
@@ -125,6 +144,29 @@ function Metodika({ go }) {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="meth-dfens-signs">
+        <div className="kicker">D-FENS · jak poznáš zmrda</div>
+        <h2 className="meth-dims-h2">Deset znaků podle D-FENS</h2>
+        <p className="meth-dims-sub">
+          Originální taxonomie z roku 2001 popisuje, podle čeho zmrda poznáš v reálu.
+          Šest měřitelných os výše je její citovatelnou destilací — tady je úplná předloha.
+        </p>
+        <ol className="dfens-signs">
+          {dfensSigns.map(([label, desc], i) => (
+            <li className="dfens-sign" key={label}>
+              <span className="dfens-sign-n mono">{String(i + 1).padStart(2, '0')}</span>
+              <span className="dfens-sign-body">
+                <strong>{label}</strong>
+                <span className="dfens-sign-d">{desc}</span>
+              </span>
+            </li>
+          ))}
+        </ol>
+        <a className="meth-blog mono" href="https://www.dfens-cz.com/" target="_blank" rel="noopener noreferrer">
+          Zdroj: D-FENS, „Jak poznáte zmrda" · dfens-cz.com, 2001 <Ico k="ext" size={14} />
+        </a>
       </section>
 
       <section className="meth-legal">

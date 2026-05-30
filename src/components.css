@@ -334,6 +334,8 @@
 .meth-dim-n { position: absolute; top: 18px; right: 20px; color: var(--line-2); font-size: 13px; }
 .meth-dim h3 { font-size: 20px; margin-bottom: 8px; }
 .meth-dim p { font-size: 14.5px; color: var(--ink-soft); margin: 0; }
+.meth-dims-note { font-size: 14px; color: var(--ink-faint); margin-top: 18px; max-width: 760px; }
+.meth-dims-note a { color: var(--signal-ink); text-decoration: underline; text-underline-offset: 2px; }
 
 .scale-rows { display: flex; flex-direction: column; gap: 2px; margin-top: 18px; }
 .scale-row { display: grid; grid-template-columns: 92px 1fr; gap: 4px 14px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--line); }
@@ -343,6 +345,14 @@
 .scale-d { grid-column: 2; }
 .scale-t { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.02em; }
 .scale-d { font-size: 15px; color: var(--ink-soft); }
+
+.meth-dfens-signs { padding: 56px 0 0; }
+.dfens-signs { list-style: none; margin: 26px 0 18px; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px 28px; }
+.dfens-sign { display: flex; gap: 14px; align-items: baseline; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.dfens-sign-n { color: var(--signal); font-size: 13px; flex: none; width: 24px; }
+.dfens-sign-body { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.dfens-sign-body strong { font-family: var(--font-display); font-size: 18px; letter-spacing: -0.02em; }
+.dfens-sign-d { font-size: 14.5px; color: var(--ink-soft); }
 
 .meth-legal { padding: 56px 0 0; max-width: 760px; color: var(--ink-soft); font-size: 16px; }
 .meth-legal .kicker { margin-bottom: 12px; }
@@ -356,7 +366,7 @@
   .hero-grid, .mapwrap, .detail-grid, .meth-pillars { grid-template-columns: 1fr; gap: 32px; }
   .hero-side { align-items: flex-start; }
   .medallion-badge { right: auto; left: clamp(130px, 18vw, 180px); }
-  .steps-grid, .meth-dims-grid { grid-template-columns: 1fr; }
+  .steps-grid, .meth-dims-grid, .dfens-signs { grid-template-columns: 1fr; }
   .cartogram, .detail-left { position: static; }
   .manifest-bar { left: -16px; }
   .scale-row { grid-template-columns: 90px 1fr; }

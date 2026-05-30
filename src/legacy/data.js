@@ -11,7 +11,7 @@
       hint: 'Doložené nepravdivé a zavádějící výroky.',
       lit: 'Nepravdy doloženy.', clean: 'Bez záznamu nepravd.' },
     { key: 'penize',      q: 'Žije z cizích peněz?',  label: 'Cizí peníze',
-      hint: 'Čerpání veřejných prostředků, dotace, střet zájmů.',
+      hint: 'Život z veřejných peněz bez vlastního přínosu — dotační byznys, trafiky, střet zájmů.',
       lit: 'Žije z veřejných peněz.', clean: 'Veřejné peníze čisté.' },
     { key: 'prace',       q: 'Vyhýbá se práci?',      label: 'Docházka',
       hint: 'Účast na hlasováních a jednáních dle záznamů.',

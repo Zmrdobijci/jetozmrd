@@ -126,7 +126,7 @@ Pro databázi je hodnocení **binární** (osa svítí 🔴, nebo ne). Při anal
 | Klíč | Otázka | 🔴 do `lit` když… |
 |------|--------|-------------------|
 | **lze** | Lže prokazatelně? | Demagog/archiv doloží opakované nepravdivé či zavádějící výroky |
-| **penize** | Žije z cizích peněz / dotací? | Doložené čerpání veřejných prostředků, dotace ve střetu zájmů, zakázky, profit přes rodinu/firmy |
+| **penize** | Žije z cizích peněz / dotací? | Doložený vzorec života z veřejných peněz bez vlastního přínosu — dotační byznys, trafiky / dosazené funkce, střet zájmů, zakázky či profit přes rodinu/firmy, dotační podvod |
 | **prace** | Vyhýbá se práci? | psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast |
 | **konzistence** | Je nekonzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích dle výhody |
 | **toxicita** | Chová se toxicky? | Doložené urážky, dehonestace, šikana, výhrůžky vůči konkrétním osobám |
@@ -144,6 +144,13 @@ nikdy ne to, zda osa svítí. Nazvi stav přesně — a osu rozsviť.
 Do `lit` patří vše, co bys obhájil před soudem o **přípustné kritice** (tj. fakt
 opřený o veřejný zdroj). Jen čistě spekulativní nebo nedoložené tvrzení nesvítí —
 to ale není totéž jako „není rozsudek".
+
+**Pozor u `penize` — *vzorec*, ne jednorázovka.** Osu rozsvěcuje doložená *závislost*
+existence nebo byznysu na veřejných penězích, ne jeden legální příjem. Běžný plat za reálně
+vykonávanou funkci nebo jedna dotace dostupná komukoli za reálný projekt **nesvítí**. Svítí,
+když je veřejný zdroj *jádrem* příjmů bez vlastního přínosu: dotační impérium, trafika /
+dosazená funkce, čerpání ve střetu zájmů, dotační podvod. Test: *„dal by mu někdo tu korunu
+dobrovolně z vlastní kapsy za to, co reálně umí?"*
 
 ---
 
