@@ -127,8 +127,8 @@ Pro databázi je hodnocení **binární** (osa svítí 🔴, nebo ne). Při anal
 |------|--------|-------------------|
 | **lze** | Lže prokazatelně? | Demagog/archiv doloží opakované nepravdivé či zavádějící výroky |
 | **penize** | Žije z cizích peněz / dotací? | Doložené čerpání veřejných prostředků, dotace ve střetu zájmů, zakázky, profit přes rodinu/firmy |
-| **prace** | Chodí do práce? | psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast |
-| **konzistence** | Je konzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích dle výhody |
+| **prace** | Vyhýbá se práci? | psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast |
+| **konzistence** | Je nekonzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích dle výhody |
 | **toxicita** | Chová se toxicky? | Doložené urážky, dehonestace, šikana, výhrůžky vůči konkrétním osobám |
 | **zbabelost** | Je zbabělý? | Doložené vyhýbání se odpovědnosti, házení podřízených/rodiny přes palubu |
 
