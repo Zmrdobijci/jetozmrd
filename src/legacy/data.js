@@ -1954,6 +1954,44 @@
     person({"id":"hajek-oldrich","name":"Oldřich Hájek","party":"ANO","role":"senátor za obvod 80 (Zlín)","scope":"senát","photo":null,"photoPos":null,"gallery":[],"obvod":80,"category":"Vohnout","categoryReason":"Hájek není architekt zmrdství — je jeho loajální vstupenka do Senátu. Dorazil přes transakční dohodu: nejméně čtyři poslanci ANO si od něj koupili tituly na jeho soukromé škole bez české akreditace, pak ho nominovali. V Senátu dluh splácí — hlasuje a zpravodajuje pro vládní linii Babiše, ke škole bez transparentnosti mlčí. Ne Oportunistický zmrd (nemění postoje), ale Vohnout: líže kliky nahoru, odpovědnosti dolů se vyhýbá.","dictum":"Tituly nahoru, hlasy dolů — systém vzájemných služeb fungoval ještě před první senátorskou schůzí.","highlight":"Nejméně čtyři poslanci ANO získali tituly na Hájkově škole — pobočce polské Jagiellonské univerzity v Toruni, která nepodléhá českému Národnímu akreditačnímu úřadu — a poté ho nominovali do Senátu. Absolventi odmítli zveřejnit závěrečné práce, ač to zákon vyžaduje. Hájek netransparentnost nenapravil, pouze konstatoval, že „vše proběhlo legálně\". Škola v roce 2023 vykázala tržby 33,8 mil. Kč.","lit":["zbabelost"],"dfens":[{"n":3,"why":"V Senátu prosazuje vládní zákony koalice Babiše a ke kritice vlastní školy mlčí."},{"n":10,"why":"Do Senátu vstoupil jako produkt kolektivní výměny: tituly poslancům ANO za senátorskou nominaci."}],"overrides":{"zbabelost":{"text":"Čtyři poslanci ANO získali tituly na Hájkově škole (pobočka Jagiellonské univerzity v Toruni, mimo kontrolu českého NAÚ). Absolventi odmítli závěrečné práce zveřejnit, přestože to zákon vyžaduje. Hájek netransparentnost nehájil ani nenapravil, pouze konstatoval, že „vše proběhlo legálně\", a místo přímého přístupu k pracím nabídl „kontaktní formulář\".","src":[{"p":"Aktuálně.cz","t":"Poslanci ANO u něj získali tituly, pak ho navrhli do Senátu. Stát na školu nemůže","u":"https://zpravy.aktualne.cz/domaci/hajek-ano/r~c2cf14d6608111ef80bfac1f6b220ee8/"},{"p":"Wikipedie","t":"Fakulta veřejnosprávních a ekonomických studií v UH (Jagiellonská univerzita) — akreditace a kontroverze","u":"https://cs.wikipedia.org/wiki/Fakulta_ve%C5%99ejnospr%C3%A1vn%C3%ADch_a_ekonomick%C3%BDch_studi%C3%AD_v_Uhersk%C3%A9m_Hradi%C5%A1ti,_Vysok%C3%A1_%C5%A1kola_Jagiellonsk%C3%A1_v_Toruni"}]},"lze":{"text":"Demagog.cz neeviduje ověřené výroky Oldřicha Hájka."},"penize":{"text":"Hlídač státu eviduje vazby na soukromé firmy se státními zakázkami; příjmy školy jsou privátní (školné), ne přímé dotace. Doložený dar ANO 570 000 Kč v roce kandidatury (2024) svědčí o transakčním vztahu, ne o čerpání veřejných prostředků bez přínosu."},"prace":{"text":"Člen Výboru pro hospodářství, zemědělství a dopravu; aktivní zpravodaj. Bez záznamu o nadprůměrné neúčasti."},"konzistence":{"text":"Nový hráč — žádné doložené otočky v klíčových postojích."},"toxicita":{"text":"Bez záznamu dehonestujících výroků."}}}),
   ];
 
+  // Doplň celou kandidátku obvodů 2026 (zdroj: senat-kandidati.js). Kandidáti, které
+  // zmrdometr ještě neprověřil, se přidají jako Šedá zóna — mapa tak ukáže kompletní
+  // slate obvodu, ne jen oskórované. Jakmile někoho oskórujeme (přidáme výš do SENAT),
+  // jeho duplicitní šedý stub se vynechá (shoda jméno + obvod).
+  (function mergeKandidati() {
+    const roster = (typeof window !== 'undefined' && window.SENAT_KANDIDATI_2026) || [];
+    if (!roster.length) return;
+    const skore = (typeof window !== 'undefined' && window.SENAT_SKORE) || {};
+    const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
+      .replace(/[^a-z\s]/g, ' ').split(/\s+/).filter(Boolean);
+    const subset = (a, b) => a.length && a.every((t) => b.includes(t));
+    const scored = SENAT.map((p) => ({ obvod: p.obvod, toks: norm(p.name) }));
+    roster.forEach((c) => {
+      const ct = norm(c.name);
+      // už hand-written výš v SENAT (incumbenti)? nech být.
+      if (scored.some((s) => s.obvod === c.obvod && subset(ct, s.toks))) return;
+      const id = 'kand-' + c.obvod + '-' + c.num;
+      const base = {
+        id, name: c.name, party: c.party,
+        role: 'kandidát/ka do Senátu · obvod ' + c.obvod + (c.mesto ? ' (' + c.mesto + ')' : ''),
+        scope: 'senát', obvod: c.obvod,
+      };
+      const s = skore[id];
+      if (s) {
+        SENAT.push(person(Object.assign(base, {
+          category: s.category, categoryReason: s.categoryReason, dictum: s.dictum,
+          highlight: s.highlight, lit: s.lit || [], dfens: s.dfens, overrides: s.overrides,
+        })));
+      } else {
+        SENAT.push(person(Object.assign(base, {
+          gray: true,
+          categoryReason: 'Kandidát/ka do Senátu' + (c.job ? ' (' + c.job + ')' : '') + '. Zmrdometr zatím neprověřil — šedá zóna do doložení faktů.',
+          lit: [],
+        })));
+      }
+    });
+  })();
+
   const ALL = HEADLINERS.concat(SENAT);
   const byId = {};
   ALL.forEach((p) => { byId[p.id] = p; });

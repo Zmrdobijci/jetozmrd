@@ -7,6 +7,8 @@ import './setup-globals.js';
 import './styles.css';
 import './components.css';
 
+import './legacy/senat-kandidati.js';
+import './legacy/senat-skore.js';
 import './legacy/data.js';
 import './legacy/czmap.js';
 import './legacy/icons.jsx';
