@@ -568,3 +568,26 @@
 .pixel-tip-score.v-mid, .pixel-tip-cat.v-mid { color: oklch(0.58 0.17 45); }
 .pixel-tip-score.v-high, .pixel-tip-cat.v-high { color: var(--signal); }
 .pixel-tip-score.v-gray, .pixel-tip-cat.v-gray { color: var(--ink-faint); }
+
+/* stádium zazmrdovatění organizace (D-FENS) */
+.strana-stadium {
+  display: flex; gap: 14px; align-items: flex-start;
+  padding: 12px 14px; margin-bottom: 14px; border-radius: var(--radius);
+  background: var(--paper-2); border-left: 3px solid var(--ink-faint);
+}
+.strana-stadium.v-0 { border-left-color: var(--clean); }
+.strana-stadium.v-low { border-left-color: oklch(0.58 0.12 75); }
+.strana-stadium.v-mid { border-left-color: oklch(0.58 0.17 45); }
+.strana-stadium.v-high { border-left-color: var(--signal); }
+.strana-stadium-tag { flex-shrink: 0; width: 130px; display: flex; flex-direction: column; gap: 2px; }
+.strana-stadium-kicker { font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); }
+.strana-stadium-label { font-family: var(--font-display); font-size: 15px; font-weight: 700; line-height: 1.1; }
+.strana-stadium.v-0 .strana-stadium-label { color: var(--clean); }
+.strana-stadium.v-low .strana-stadium-label { color: oklch(0.52 0.13 75); }
+.strana-stadium.v-mid .strana-stadium-label { color: oklch(0.55 0.17 45); }
+.strana-stadium.v-high .strana-stadium-label { color: var(--signal); }
+.strana-stadium-text { font-size: 12.5px; line-height: 1.45; color: var(--ink-soft); }
+@media (max-width: 560px) {
+  .strana-stadium { flex-direction: column; gap: 6px; }
+  .strana-stadium-tag { width: auto; flex-direction: row; align-items: baseline; gap: 8px; }
+}

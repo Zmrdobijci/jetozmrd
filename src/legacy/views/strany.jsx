@@ -41,6 +41,29 @@ const TIER_BG = {
   'v-gray': 'var(--ink-faint)',
 };
 
+/* D-FENS stádia zazmrdovatění organizace — podle průměrného skóre na politika.
+   Každý ~1 bod průměru = v průměru o jednu rozsvícenou osu víc. */
+const DFENS_STADIA = [
+  { min: 0.0, cls: 'v-0', label: 'Imunní organismus',
+    text: 'Zmrd se tu neuchytí. Protilátky fungují — kompetence pořád poráží intriku a lízání klik se nenosí.' },
+  { min: 0.5, cls: 'v-low', label: 'Ojedinělý nosič',
+    text: 'Jednotlivé skvrny, ne vzorec. Zmrd je tu zatím anomálie, kterou organizace izoluje, místo aby z ní dělala normu.' },
+  { min: 1.5, cls: 'v-low', label: 'Kolonizace',
+    text: 'Zmrdi se zabydleli a začínají síťovat (znak 10 — kolektivní). Loajalita k partě konkuruje výkonu; slušní tiše počítají dny.' },
+  { min: 2.5, cls: 'v-mid', label: 'Systémová nákaza',
+    text: 'Zmrdí chování se odměňuje, ne trestá. Kdo nehraje, odchází nebo mlčí. Organizace už slouží partě, ne svému účelu.' },
+  { min: 3.5, cls: 'v-high', label: 'Zmrdokracie',
+    text: 'Vedení i kultura jsou v rukou konglomerátu zmrdů. Deklarovaný účel je už jen kulisa pro přerozdělování moci a peněz.' },
+  { min: 4.5, cls: 'v-high', label: 'Učebnicový konglomerát',
+    text: 'Terminální stádium. Organizace existuje hlavně proto, aby zmrdy živila, kryla a reprodukovala. Čistá kultura zmrda.' },
+];
+
+function stadiumFor(avg) {
+  let s = DFENS_STADIA[0];
+  for (const x of DFENS_STADIA) if (avg >= x.min) s = x;
+  return s;
+}
+
 function czPlural(n, one, few, many) {
   if (n === 1) return one;
   if (n >= 2 && n <= 4) return few;
@@ -106,7 +129,9 @@ function StranyView({ go }) {
       </div>
 
       <div className="strany-list">
-        {parties.map((p, i) => (
+        {parties.map((p, i) => {
+          const st = stadiumFor(p.avg);
+          return (
           <section className="strana-card" key={p.name}>
             <div className="strana-head">
               <span className="strana-rank mono">{String(i + 1).padStart(2, '0')}</span>
@@ -131,6 +156,14 @@ function StranyView({ go }) {
               <span className="strana-bar-label mono">celkem {p.total} {czPlural(p.total, 'bod', 'body', 'bodů')} zmrdství</span>
             </div>
 
+            <div className={'strana-stadium ' + st.cls}>
+              <span className="strana-stadium-tag">
+                <span className="strana-stadium-kicker mono">stádium dle D-FENS</span>
+                <span className="strana-stadium-label">{st.label}</span>
+              </span>
+              <span className="strana-stadium-text">{st.text}</span>
+            </div>
+
             <div className="pixelfield">
               {p.members.map((m) => (
                 <button
@@ -146,7 +179,8 @@ function StranyView({ go }) {
               ))}
             </div>
           </section>
-        ))}
+          );
+        })}
       </div>
 
       <p className="carto-note mono" style={{ marginTop: 28 }}>
