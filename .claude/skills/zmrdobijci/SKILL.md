@@ -76,7 +76,12 @@ web vykreslí — ne v textu okolo.
 
 - **`id`** — slug bez diakritiky, malými písmeny (`schillerova`, `havlicek`). Krátká forma příjmení stačí, musí být unikátní v databázi. Je to zároveň routa profilu na webu (`#/detail/[id]`).
 - **`scope`** — `"celostátní"` nebo `"senát"`. U senátu vyplň i **`obvod`** (číslo) a `role` typu `"kandidát do Senátu"`.
-- **`photo` / `photoPos` / `gallery`** — když nemáš doložené veřejné foto, ponech `null` / `[]`. Nevymýšlej cesty.
+- **`photo`** — **aktivně dohledej oficiální portrét** a vlož přímou URL na obrázek (ne na stránku). Priorita zdrojů:
+  - **Poslanec PSP** → psp.cz. Otevři detail osoby (`WebFetch https://www.psp.cz/sqw/detail.sqw?id=<id_osoby>` nebo přes vyhledávání) a vezmi `<img class="sharp" src="/eknih/cdrom/2025ps/eknih/2025ps/poslanci/i<ID>.jpg">`; výsledná URL je `https://www.psp.cz/eknih/cdrom/2025ps/eknih/2025ps/poslanci/i<ID>.jpg`.
+  - **Senátor** → senat.cz. Na detailu senátora (`…/senatori/index.php?par_2=2` → odkaz par_3=<id>) najdi `/images/senatori/<slug>_295.jpg`; URL je `https://www.senat.cz/images/senatori/<slug>_295.jpg`.
+  - **Ostatní (ministr-neposlanec, historická osoba)** → Wikimedia Commons / cs.wikipedia lead image: `WebFetch https://cs.wikipedia.org/w/api.php?action=query&redirects=1&titles=<Jméno>&prop=pageimages&piprop=thumbnail&pithumbsize=500&format=json` → `thumbnail.source`. Jen **solo portrét správné osoby** (ověř popisek/kategorii); skupinové foto NE.
+  - **Pravidla:** vždy ověř, že portrét patří TÉ osobě (časté jméno = riziko záměny); použij jen oficiální nebo volně licencovaný zdroj (psp.cz, senat.cz, Wikimedia Commons), **nikdy chráněnou tiskovou fotku**; **raději `null` než špatná nebo rozbitá URL**. Nevymýšlej cesty.
+- **`photoPos` / `gallery`** — ponech `null` / `[]`, pokud nemáš důvod jinak.
 - **`lit`** — pole klíčů os, které **🔴 svítí**. POUZE z: `lze`, `penize`, `prace`, `konzistence`, `toxicita`, `zbabelost`. `score = lit.length` (0–6) se dopočítá — do JSON ho **nepiš**.
 - **`category`** — z povolené množiny (viz Kategorie). Pro headlinery vyplňuj vždy. Bez ní se dopočítá ze `score` přes `categoryFor()`.
 - **`categoryReason`** *(renderuje se — „Proč tahle kategorie", přímo pod hlavičkou)* — 2–4 věty, proč právě tahle kategorie a ne sousední (např. „Systémový, ne Populistický, protože…"). U headlinerů povinné.
@@ -342,7 +347,7 @@ konkrétního zdroje do `src`.
   "party": "ANO",
   "role": "ministryně financí a místopředsedkyně vlády",
   "scope": "celostátní",
-  "photo": null, "photoPos": null, "gallery": [], "obvod": null,
+  "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Schillerov%C3%A1_Raku%C5%A1an_2023_%28cropped%29.jpg/500px-Schillerov%C3%A1_Raku%C5%A1an_2023_%28cropped%29.jpg", "photoPos": null, "gallery": [], "obvod": null,
   "category": "Systémový zmrd",
   "categoryReason": "Není exhibicionistka jako Turek — funguje tiše a efektivně. Kombinuje rodinné finanční toky, blízkost k neveřejným státním informacím a selektivní fiskální morálku. Učebnicový produkt ekosystému ANO — proto Systémový, ne Populistický.",
   "dictum": "Méně viditelná verze systémového zmrdství: žádná exhibice, jen rodinné finance, státní informace na dosah a fiskální morálka, která platí vždycky jen pro druhé.",
@@ -382,7 +387,7 @@ Havlíček má dvě doložené osy a žádný systém, proto 2/6, ne 5/6.
   "party": "ANO",
   "role": "ministr průmyslu a obchodu, 1. místopředseda vlády",
   "scope": "celostátní",
-  "photo": null, "photoPos": null, "gallery": [], "obvod": null,
+  "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Karel_Havl%C3%AD%C4%8Dek_akademicky-snem-duben-2026_03_%28cropped%29.jpg/500px-Karel_Havl%C3%AD%C4%8Dek_akademicky-snem-duben-2026_03_%28cropped%29.jpg", "photoPos": null, "gallery": [], "obvod": null,
   "category": "Hraniční případ",
   "categoryReason": "Havlíček není architekt zmrdství — je jeho spolehlivý vykonavatel. Vlastní dotační minulost a kalkul kolem Rosatomu ho drží nad čistou nulou, ale chybí mu systém i iniciativa Babiše či tichý profit Schillerové. Technokrat v nesprávném dresu — proto jen hraniční, ne plnokrevný.",
   "dictum": "Není architekt zmrdství, je jeho spolehlivý vykonavatel — jenže vykonavatel s vlastním dotačním ocasem a ochotou hrát si s národní bezpečností.",
