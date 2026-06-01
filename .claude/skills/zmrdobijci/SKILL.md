@@ -133,7 +133,7 @@ Pro databázi je hodnocení **binární** (osa svítí 🔴, nebo ne). Při anal
 | **lze** | Lže prokazatelně? | Demagog/archiv doloží opakované nepravdivé či zavádějící výroky |
 | **penize** | Žije z cizích peněz / dotací? | Doložený vzorec života z veřejných peněz bez vlastního přínosu — dotační byznys, trafiky / dosazené funkce, střet zájmů, zakázky či profit přes rodinu/firmy, dotační podvod |
 | **prace** | Vyhýbá se práci? | psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast |
-| **konzistence** | Je nekonzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích dle výhody |
+| **konzistence** | Je nekonzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích dle výhody; **i série přeběhů přes ideologické spektrum** (viz „Pozor u konzistence" níže) |
 | **toxicita** | Chová se toxicky? | Doložené urážky, dehonestace, šikana, výhrůžky vůči konkrétním osobám |
 | **zbabelost** | Je zbabělý? | Doložené vyhýbání se odpovědnosti, házení podřízených/rodiny přes palubu |
 
@@ -156,6 +156,17 @@ vykonávanou funkci nebo jedna dotace dostupná komukoli za reálný projekt **n
 když je veřejný zdroj *jádrem* příjmů bez vlastního přínosu: dotační impérium, trafika /
 dosazená funkce, čerpání ve střetu zájmů, dotační podvod. Test: *„dal by mu někdo tu korunu
 dobrovolně z vlastní kapsy za to, co reálně umí?"*
+
+**Pozor u `konzistence` — přeběhlictví přes spektrum svítí i bez „obratu v mandátu".**
+Osa **nesvítí jen** za otočku doloženou ve funkci nebo za explicitní programový obrat
+v drženém mandátu. Svítí i **série stranických přesunů přes ideologicky neslučitelné
+tábory** (např. ČSSD → SPOZ → SPD), a to **i když šlo o pouhé neúspěšné kandidatury** bez
+získaného postu. Samotné křižování levice–pravice *je* ten obrat — kdo střídá programově
+protichůdné strany podle volitelnosti, je oportunista bez ohledu na to, že mandát nezískal;
+„byly to jen neúspěšné kandidatury, ne otáčení kabátu ve funkci" **není** důvod osu zhasnout.
+Test: *„dají se programy strany A a strany B držet současně, nebo se navzájem vylučují?"*
+Vylučují → konzistence svítí (a `category` spíš `Oportunistický zmrd`). Naopak **jeden** přesun
+mezi blízkými stranami téhož proudu, nebo **jediná** kandidatura, sám o sobě nesvítí.
 
 ---
 
