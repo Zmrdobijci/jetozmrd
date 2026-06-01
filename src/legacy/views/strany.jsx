@@ -96,7 +96,7 @@ const LOGO_FILE = {
   'SEN 21': 'SEN 21 logo (2024).svg',
   'Svobodní': 'Svobodní 2022.svg',
   'Naše Česko': 'Naše Česko, Martin Kuba, hnutí (logo).png',
-  'Přísaha': 'Přísaha 2021.svg',
+  'Přísaha': 'Přísaha.svg',
   'Trikolora': "Tricolour Citizens' Movement logo.svg",
 };
 
