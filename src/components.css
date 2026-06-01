@@ -619,3 +619,10 @@
 .strany-dfens-link:hover { border-bottom-color: var(--signal); }
 
 .meth-org-cta { margin-top: 18px; }
+
+/* org-stádia: delší pásma skóre se nesmí lámat v pilulce */
+.meth-org .scale-row { grid-template-columns: 124px 1fr; }
+.meth-org .verdict { white-space: nowrap; justify-content: center; }
+@media (max-width: 560px) {
+  .meth-org .scale-row { grid-template-columns: 112px 1fr; }
+}
