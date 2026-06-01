@@ -617,3 +617,5 @@
 
 .strany-dfens-link { color: var(--signal); text-decoration: none; border-bottom: 1px solid color-mix(in oklch, var(--signal) 40%, transparent); }
 .strany-dfens-link:hover { border-bottom-color: var(--signal); }
+
+.meth-org-cta { margin-top: 18px; }

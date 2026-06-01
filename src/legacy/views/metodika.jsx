@@ -24,6 +24,16 @@ function Metodika({ go }) {
     ['Kolektivní', 'Tvoří konglomeráty zmrdů — účelová spojenectví.'],
   ];
 
+  // Stádia zazmrdovatění organizace — „koeficient nasycenosti struktury zmrdy" (D-FENS)
+  const orgStadia = [
+    ['Ø 0–0.5', 'Imunní organismus', 'v-0', 'Funkční obranné mechanismy. Kompetence poráží intriku, lízání klik se nevyplácí — zmrda struktura vyplivne dřív, než zapustí kořeny.'],
+    ['Ø 0.5–1.5', 'Zmrdí embryo', 'v-low', 'Zdravá tkáň s ojedinělým zmrdím embryem. Pár skvrn, žádný vzorec — strukturu drží výkon, ne loajalita.'],
+    ['Ø 1.5–2.5', 'První fáze ovládnutí', 'v-low', 'Koeficient nasycenosti roste. Zmrdi operují koordinovaně, tvoří konglomerát a loajalita k partě začíná přebíjet výkon.'],
+    ['Ø 2.5–3.5', 'Systémová nákaza', 'v-mid', 'Struktura prolezlá zmrdy. Vládne „navrch huj, vespod fuj" — odměňuje se lízání klik, ne výsledek. Organizace slouží partě, ne účelu.'],
+    ['Ø 3.5–4.5', 'Zmrdokracie', 'v-high', 'Konglomerát zmrdů ovládl kormidlo. Celá organizace jede jako divadelní představení, deklarovaný účel je kulisa.'],
+    ['Ø 4.5–6', 'Učebnicový konglomerát', 'v-high', 'Terminální nasycenost. Organizace existuje, aby zmrdy živila, kryla a reprodukovala. Zmrdobijce by tu ukřižovali.'],
+  ];
+
   return (
     <div className="view metodika wrap">
       <header className="page-head">
@@ -167,6 +177,32 @@ function Metodika({ go }) {
         <a className="meth-blog mono" href="https://www.dfens-cz.com/" target="_blank" rel="noopener noreferrer">
           Zdroj: D-FENS, „Jak poznáte zmrda" · dfens-cz.com, 2001 <Ico k="ext" size={14} />
         </a>
+      </section>
+
+      <section className="meth-dfens-signs meth-org">
+        <div className="kicker">D-FENS · zmrd v organizaci</div>
+        <h2 className="meth-dims-h2">Zazmrdovatění celé organizace</h2>
+        <p className="meth-dims-sub">
+          Zmrdství se nezastaví u jednotlivce. D-FENS popisuje, jak zmrd organizaci infiltruje
+          a postupně nasytí — měří to <strong>„koeficientem nasycenosti struktury zmrdy"</strong>.
+          Tutéž optiku přikládáme na politické strany: průměrné skóre na politika určuje stádium,
+          v němž se strana jako organismus nachází.
+        </p>
+        <div className="scale-rows">
+          {orgStadia.map(([band, label, cls, desc]) => (
+            <div className="scale-row" key={label}>
+              <span className={'verdict ' + cls}><strong>{band}</strong></span>
+              <span className="scale-t">{label}</span>
+              <span className="scale-d">{desc}</span>
+            </div>
+          ))}
+        </div>
+        <a className="meth-blog mono" href="https://dfens-cz.com/zmrdi-iii-infiltracni-prirucka/" target="_blank" rel="noopener noreferrer">
+          Origoš metodika: D-FENS, „Zmrdi III — Infiltrační příručka" · dfens-cz.com <Ico k="ext" size={14} />
+        </a>
+        <div className="meth-org-cta">
+          <button className="btn" onClick={() => go('strany')}>Měření stran podle stádia <Ico k="arrow" size={16} /></button>
+        </div>
       </section>
 
       <section className="meth-legal">
