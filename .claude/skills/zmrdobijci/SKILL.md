@@ -171,19 +171,34 @@ mezi blízkými stranami téhož proudu, nebo **jediná** kandidatura, sám o so
 **Pozor u `prace` — přísně: měř docházku I životní kariéru, a nedávej osu zadarmo.**
 Osa má **dva spouštěče, stačí jeden**:
 - **(a) Vyhýbání v mandátu** — psp.cz / kohovolit.eu / EP doloží nadprůměrnou neúčast na
-  hlasováních a schůzích oproti kolegům.
+  hlasováních a schůzích oproti kolegům. **Flag vs. svícení (důležité):** samotná
+  nadprůměrná absence se **zaznamená** a default ji rozsvěcuje — **ale nesvítí u toho,
+  kdo prokazatelně tvrdě maká jinde** (řídí firmu/vládu, hyperaktivní výkon). Osa měří
+  *„nepracuje / vyhýbá se práci"*, ne *„zmeškal hlasování, protože byl zaneprázdněný"*.
+  U doloženého dříče (typicky Babiš — nejvyšší absence ve Sněmovně, ale neúnavný v holdingu
+  i vládě) absenci **flagni v `text`, osu nech nesvítit**. Výjimka platí jen pro doloženého
+  dříče; u prostého absentéra bez protichůdného důkazu práce (typicky Foldyna) osa svítí.
 - **(b) Žádná reálná práce v životě** — kariéra od mládí jen v politice, stranických
   funkcích, dosazených pozicích a trafikách, **bez doloženého období, kdy člověk tvrdě
   makal v reálné profesi** (řemeslo, medicína, věda, sedlák, vlastní firma s reálným
   výkonem…). Profi politik od pětadvaceti bez jediného skutečného džobu = osa svítí.
+- **(c) Dlouhá dráha v politice bez výstupu — vyžírka.** Kdo se **~20 let a víc** pohybuje
+  v politice (mandáty, opakované kandidatury napříč stranami, stranické a dosazené funkce)
+  a přitom **nemá doloženou reálnou profesi ani jediný doložitelný výstup** (přijatý zákon,
+  reálný projekt, odborný výkon), je **vyžírka** — léta žije z politiky, aniž co vyprodukoval.
+  Osa svítí. Délka pohybu v politice bez výsledku je sama o sobě nálezem, ne polehčující okolností.
 
 **Důkazní pravidlo (klíčové — obrácené břemeno):** osu **nezhasínej z dobré vůle.**
 Když tvrdíš, že subjekt „maká" / „má za sebou poctivou práci", **uveď konkrétní důkaz**
 do `text` + `src` (profese, zaměstnavatel, období, doložený výkon). Když důkaz nemáš,
-**napiš to natvrdo** — `text`: „reálná kariéra mimo politiku nedoložena — data chybí" —
-a osu z presumpce neviny nech nesvítit, ale **nikdy netvrď pracovitost bez dokladu**.
-Pořadí: doložený profi-politik bez reálné profese → 🔴 svítí; doložená reálná kariéra
-→ čistá (s citací); nezjištěno → „data chybí", nesvítí, žádné chvály bez důkazu.
+**napiš to natvrdo** — `text`: „reálná kariéra mimo politiku nedoložena — data chybí".
+Pozor ale na rozdíl podle délky dráhy: „data chybí → nesvítí" platí jen u **krátké či nové
+kariéry** (presumpce neviny — ještě nebyl čas nic doložit). U **veterána s ~20+ lety
+v politice**, u nějž se ani po rešerši nenajde reálná profese ani jediný výstup, **už to
+není neutrální mezera, ale doklad vyžírky (spouštěč c) → osa svítí.** Nikdy ovšem netvrď
+pracovitost bez dokladu. Pořadí: doložený profi-politik / veterán bez profese a výstupu
+→ 🔴 svítí; doložená reálná kariéra → čistá (s citací); krátká kariéra a nezjištěno
+→ „data chybí", nesvítí, žádné chvály bez důkazu.
 
 ---
 
