@@ -591,3 +591,15 @@
   .strana-stadium { flex-direction: column; gap: 6px; }
   .strana-stadium-tag { width: auto; flex-direction: row; align-items: baseline; gap: 8px; }
 }
+
+/* monogramové logo strany */
+.strana-logo {
+  flex-shrink: 0; width: 46px; height: 46px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 800; font-size: 14px;
+  letter-spacing: -0.01em; line-height: 1; text-align: center;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.08);
+}
+@media (max-width: 560px) {
+  .strana-logo { width: 38px; height: 38px; font-size: 12px; }
+}

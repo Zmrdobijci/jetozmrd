@@ -132,7 +132,7 @@ Pro databázi je hodnocení **binární** (osa svítí 🔴, nebo ne). Při anal
 |------|--------|-------------------|
 | **lze** | Lže prokazatelně? | Demagog/archiv doloží opakované nepravdivé či zavádějící výroky |
 | **penize** | Žije z cizích peněz / dotací? | Doložený vzorec života z veřejných peněz bez vlastního přínosu — dotační byznys, trafiky / dosazené funkce, střet zájmů, zakázky či profit přes rodinu/firmy, dotační podvod |
-| **prace** | Vyhýbá se práci? | psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast |
+| **prace** | Vyhýbá se práci — v mandátu i v životě? | (a) psp.cz / EP / kohovolit.eu vykazují nadprůměrnou neúčast, **NEBO** (b) nemá doloženou reálnou kariéru mimo politiku — v životě nikdy tvrdě nemakal (profi politik / trafikant od mládí). Čistá osa **vyžaduje důkaz** práce; viz „Pozor u prace" níže |
 | **konzistence** | Je nekonzistentní? | Doložené otáčení kabátu, změny stran, obraty v klíčových postojích dle výhody; **i série přeběhů přes ideologické spektrum** (viz „Pozor u konzistence" níže) |
 | **toxicita** | Chová se toxicky? | Doložené urážky, dehonestace, šikana, výhrůžky vůči konkrétním osobám |
 | **zbabelost** | Je zbabělý? | Doložené vyhýbání se odpovědnosti, házení podřízených/rodiny přes palubu |
@@ -167,6 +167,23 @@ protichůdné strany podle volitelnosti, je oportunista bez ohledu na to, že ma
 Test: *„dají se programy strany A a strany B držet současně, nebo se navzájem vylučují?"*
 Vylučují → konzistence svítí (a `category` spíš `Oportunistický zmrd`). Naopak **jeden** přesun
 mezi blízkými stranami téhož proudu, nebo **jediná** kandidatura, sám o sobě nesvítí.
+
+**Pozor u `prace` — přísně: měř docházku I životní kariéru, a nedávej osu zadarmo.**
+Osa má **dva spouštěče, stačí jeden**:
+- **(a) Vyhýbání v mandátu** — psp.cz / kohovolit.eu / EP doloží nadprůměrnou neúčast na
+  hlasováních a schůzích oproti kolegům.
+- **(b) Žádná reálná práce v životě** — kariéra od mládí jen v politice, stranických
+  funkcích, dosazených pozicích a trafikách, **bez doloženého období, kdy člověk tvrdě
+  makal v reálné profesi** (řemeslo, medicína, věda, sedlák, vlastní firma s reálným
+  výkonem…). Profi politik od pětadvaceti bez jediného skutečného džobu = osa svítí.
+
+**Důkazní pravidlo (klíčové — obrácené břemeno):** osu **nezhasínej z dobré vůle.**
+Když tvrdíš, že subjekt „maká" / „má za sebou poctivou práci", **uveď konkrétní důkaz**
+do `text` + `src` (profese, zaměstnavatel, období, doložený výkon). Když důkaz nemáš,
+**napiš to natvrdo** — `text`: „reálná kariéra mimo politiku nedoložena — data chybí" —
+a osu z presumpce neviny nech nesvítit, ale **nikdy netvrď pracovitost bez dokladu**.
+Pořadí: doložený profi-politik bez reálné profese → 🔴 svítí; doložená reálná kariéra
+→ čistá (s citací); nezjištěno → „data chybí", nesvítí, žádné chvály bez důkazu.
 
 ---
 
@@ -375,7 +392,8 @@ konkrétního zdroje do `src`.
              "src": [ { "p": "demagog.cz", "t": "Výroky Aleny Schillerové — hodnocení", "u": "https://demagog.cz/politici/alena-schillerova-495" } ] },
     "penize": { "text": "Ministerstvo financí pod jejím vedením zaplatilo 1,93 mil. Kč ze státních peněz fotografovi a kameramanovi pečujícím o její osobní Instagram a Facebook (policie kauzu odložila, přezkoumává státní zástupce). Firma Bika manžela, kde působí i syn, v rozporu se zákonem nezveřejnila účetní závěrku se zatajeným vkladem 13 mil.",
                "src": [ { "p": "iROZHLAS", "t": "Propagace na sítích za 1,93 mil. ze státních peněz", "u": "https://www.irozhlas.cz/zpravy-domov/schillerova-fotky-propagace-instagram-policie-trestni-oznameni_2205201522_elev" }, { "p": "Neovlivní", "t": "Zatajených 13 milionů — firma manžela Bika", "u": "https://neovlivni.cz/zatajenych-13-milionu-tak-podnika-manzel-schillerove/" } ] },
-    "prace": { "text": "Jediná čistá osa — jako ministryně i předsedkyně klubu vykazovala vysokou aktivitu." },
+    "prace": { "text": "Čistá osa, doloženo: před politikou kariéra daňové právničky a vrcholné úřednice Finanční správy (generální ředitelství) — reálná profese mimo politiku doložena; jako ministryně i předsedkyně klubu vysoká aktivita.",
+               "src": [ { "p": "Wikipedie / životopis", "t": "Schillerová — daňová právnička, Finanční správa", "u": "https://cs.wikipedia.org/wiki/Alena_Schillerov%C3%A1" } ] },
     "konzistence": { "text": "Jako ministryně hájila schodek 310 mld jako neporušení zákona o rozpočtové odpovědnosti a vinu svalovala na minulou vládu; v opozici týmž metrem označovala rozpočty Stanjury za „nepravdivé a nerealistické". Národní rozpočtová rada její rozpočet označila za bezprecedentní.",
                      "src": [ { "p": "Echo24", "t": "Schodek 310 mld — zákon prý neporušila", "u": "https://www.echo24.cz/a/HXKtq/zpravy-ekonomika-rozpocet-zakon-neporusil-rika-schillerova-presto-chce-zmenu" }, { "p": "ČeskéNoviny", "t": "Rozpočtová rada: nesplní zásady odpovědnosti", "u": "https://www.ceskenoviny.cz/zpravy/rada-rozpocet-asi-nesplni-zasady-odpovednosti-je-to-bezprecedentni/2772495" } ] },
     "toxicita": { "text": "Doložená dehonestující rétorika vůči vládě a oponentům — o jmenování ministryně řekla, že „politici si podali ruku s mafií", schůzi ke kampeličce přirovnala k „devadesátkám v Bogotě".",
@@ -414,7 +432,8 @@ Havlíček má dvě doložené osy a žádný systém, proto 2/6, ne 5/6.
                "src": [ { "p": "Reportér magazín", "t": "50 milionů je pryč — dotační podvod, v němž se Havlíček objevuje", "u": "https://reportermagazin.cz/73103/50-milionu-je-navzdy-pryc-pribeh-dotacniho-podvodu-v-nemz-se-dvakrat-objevuje-karel-havlicek/" }, { "p": "iROZHLAS", "t": "Obhajoba střetu zájmů Babiše", "u": "https://www.irozhlas.cz/zpravy-domov/karel-havlicek-stret-zajmu-evropsky-soudni-dvur-rezoluce-evropskeho-parlamentu_2106131358_tzr" } ] },
     "konzistence": { "text": "V tendru na dostavbu Dukovan měsíce prosazoval účast ruského Rosatomu navzdory jednotnému varování tajných služeb; o bezpečnostním dotazníku rozhodl na poslední chvíli bez souhlasu vlády a bez vědomí vládního zmocněnce. Otočil teprve po odhalení ruské stopy ve Vrběticích.",
                      "src": [ { "p": "Transparency International", "t": "Chaotický tendr na Dukovany ohrožuje bezpečnost ČR", "u": "https://www.transparency.cz/chaoticky-a-netransparentni-tendr-na-dukovany-ohrozuje-bezpecnostni-i-ekonomicke-zajmy-cr-ministr-havlicek-prosazuje-nezakonnou-vyjimku/" }, { "p": "Aktuálně.cz", "t": "Havlíček tendr změnil, aby v něm udržel Rosatom", "u": "https://zpravy.aktualne.cz/domaci/jaderny-lobbista-havlicek-tendr-na-dostavbu-dukovan-zmenil/r~4786f7c417b611ecbc3f0cc47ab5f122/" } ] },
-    "prace": { "text": "Bez záznamu — spíše přetížen třemi funkcemi najednou než absentér." }
+    "prace": { "text": "Čistá osa, doloženo: před politikou podnikatel a vysokoškolský pedagog (ČZU), prezident Asociace malých a středních podniků — reálná kariéra mimo politiku doložena. Spíše přetížen třemi funkcemi než absentér.",
+               "src": [ { "p": "Wikipedie / životopis", "t": "Havlíček — podnikatel, pedagog ČZU, AMSP", "u": "https://cs.wikipedia.org/wiki/Karel_Havl%C3%AD%C4%8Dek_(politik)" } ] }
   }
 }
 ```

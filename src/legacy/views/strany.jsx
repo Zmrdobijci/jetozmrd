@@ -41,22 +41,44 @@ const TIER_BG = {
   'v-gray': 'var(--ink-faint)',
 };
 
-/* D-FENS stádia zazmrdovatění organizace — podle průměrného skóre na politika.
-   Každý ~1 bod průměru = v průměru o jednu rozsvícenou osu víc. */
+/* D-FENS stádia zazmrdovatění organizace — „koeficient nasycenosti struktury zmrdy"
+   (termín D-FENS, dfens-cz.com) škálovaný průměrným skóre. Texty v dikci D-FENS
+   s jeho vlastními pojmy: zmrdí embryo, ovládnutí, „navrch huj vespod fuj", líže kliky. */
 const DFENS_STADIA = [
   { min: 0.0, cls: 'v-0', label: 'Imunní organismus',
-    text: 'Zmrd se tu neuchytí. Protilátky fungují — kompetence pořád poráží intriku a lízání klik se nenosí.' },
-  { min: 0.5, cls: 'v-low', label: 'Ojedinělý nosič',
-    text: 'Jednotlivé skvrny, ne vzorec. Zmrd je tu zatím anomálie, kterou organizace izoluje, místo aby z ní dělala normu.' },
-  { min: 1.5, cls: 'v-low', label: 'Kolonizace',
-    text: 'Zmrdi se zabydleli a začínají síťovat (znak 10 — kolektivní). Loajalita k partě konkuruje výkonu; slušní tiše počítají dny.' },
+    text: 'Funkční obranné mechanismy. Zmrd narazí na kompetenci a odejde s nepořízenou — organizace ho vyplivne dřív, než stihne líznout první kliku.' },
+  { min: 0.5, cls: 'v-low', label: 'Zmrdí embryo',
+    text: 'Ojedinělé zmrdí embryo v jinak zdravé tkáni. Učí se z infiltrační příručky tvářit jako solidní mladý profík — zatím anomálie, ne vzorec.' },
+  { min: 1.5, cls: 'v-low', label: 'První fáze ovládnutí',
+    text: 'Koeficient nasycenosti roste. Zmrdi se zabydleli a operují koordinovaně — síťují, vysávají cizí zásluhy a loajalita k partě začíná přebíjet výkon.' },
   { min: 2.5, cls: 'v-mid', label: 'Systémová nákaza',
-    text: 'Zmrdí chování se odměňuje, ne trestá. Kdo nehraje, odchází nebo mlčí. Organizace už slouží partě, ne svému účelu.' },
+    text: 'Struktura prolezlá zmrdy. Vládne „navrch huj, vespod fuj" — výsledky chybí, ale kdo neumí líznout kliku, odchází nebo mlčí. Organizace slouží partě, ne účelu.' },
   { min: 3.5, cls: 'v-high', label: 'Zmrdokracie',
-    text: 'Vedení i kultura jsou v rukou konglomerátu zmrdů. Deklarovaný účel je už jen kulisa pro přerozdělování moci a peněz.' },
+    text: 'Konglomerát zmrdů u kormidla. Život jako nepřetržité divadelní představení, deklarovaný účel je kulisa: jiná tvář nahoru, jiná dolů, moc a peníze mezi své.' },
   { min: 4.5, cls: 'v-high', label: 'Učebnicový konglomerát',
-    text: 'Terminální stádium. Organizace existuje hlavně proto, aby zmrdy živila, kryla a reprodukovala. Čistá kultura zmrda.' },
+    text: 'Terminální nasycenost. Organizace existuje, aby zmrdy živila, kryla a reprodukovala. Zmrdobijce by tu ukřižovali — čistá kultura zmrda dle učebnice.' },
 ];
+
+/* monogramová „loga" stran — značková barva, kde je ověřená; jinak neutrální tmavá.
+   fg světlý, není-li uvedeno. Nejde o oficiální loga (ochranné známky), ale o stylizovaný monogram. */
+const PARTY_BRAND = {
+  'ANO': { bg: '#122a6b', abbr: 'ANO' },
+  'ODS': { bg: '#0072ce', abbr: 'ODS' },
+  'SPD': { bg: '#1e4488', abbr: 'SPD' },
+  'Piráti': { bg: '#111111', abbr: 'Pir' },
+  'STAN': { bg: '#2f3540', abbr: 'STAN' },
+  'KDU-ČSL': { bg: '#f4c400', fg: '#1a1a1a', abbr: 'KDU' },
+  'TOP 09': { bg: '#7a2e6d', abbr: 'TOP' },
+  'Motoristé sobě': { bg: '#2f3540', abbr: 'Mot' },
+  'Stačilo!/KSČM': { bg: '#d2122e', abbr: 'S!' },
+  'SOCDEM/ČSSD': { bg: '#f07d00', abbr: 'SOC' },
+  'Přísaha': { bg: '#2f3540', abbr: 'Pří' },
+  'SEN 21': { bg: '#2f3540', abbr: 'S21' },
+  'Svobodní': { bg: '#2f3540', abbr: 'Svo' },
+  'Trikolora': { bg: '#2f3540', abbr: 'Tri' },
+  'Naše Česko': { bg: '#2f3540', abbr: 'NČ' },
+  'Nezařazení': { bg: '#9a958c', abbr: '—' },
+};
 
 function stadiumFor(avg) {
   let s = DFENS_STADIA[0];
@@ -135,6 +157,10 @@ function StranyView({ go }) {
           <section className="strana-card" key={p.name}>
             <div className="strana-head">
               <span className="strana-rank mono">{String(i + 1).padStart(2, '0')}</span>
+              {(() => {
+                const b = PARTY_BRAND[p.name] || { bg: '#2f3540', abbr: p.name.slice(0, 3) };
+                return <span className="strana-logo" style={{ background: b.bg, color: b.fg || '#fff' }} aria-hidden="true">{b.abbr}</span>;
+              })()}
               <div className="strana-id">
                 <h2 className="strana-name">{p.name}</h2>
                 <div className="strana-meta mono">
@@ -158,7 +184,7 @@ function StranyView({ go }) {
 
             <div className={'strana-stadium ' + st.cls}>
               <span className="strana-stadium-tag">
-                <span className="strana-stadium-kicker mono">stádium dle D-FENS</span>
+                <span className="strana-stadium-kicker mono">nasycenost zmrdy · D-FENS</span>
                 <span className="strana-stadium-label">{st.label}</span>
               </span>
               <span className="strana-stadium-text">{st.text}</span>
@@ -184,7 +210,8 @@ function StranyView({ go }) {
       </div>
 
       <p className="carto-note mono" style={{ marginTop: 28 }}>
-        Zobrazeno {assessed.length} politiků s naměřeným skóre · nehodnocení kandidáti čekají na posudek · zdroj členění: psp.cz, senat.cz
+        Zobrazeno {assessed.length} politiků s naměřeným skóre · nehodnocení kandidáti čekají na posudek · zdroj členění: psp.cz, senat.cz<br />
+        Stádia „nasycenosti struktury zmrdy" volně dle zmrdologie D-FENS (dfens-cz.com). Loga stran jsou stylizované monogramy, ne oficiální značky.
       </p>
 
       {tip && (
