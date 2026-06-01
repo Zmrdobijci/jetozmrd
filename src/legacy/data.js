@@ -702,6 +702,7 @@
     }),
     person({
       id: 'blazek', name: 'Pavel Blažek', party: 'ODS (členství pozastaveno)',
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Pavel_Bla%C5%BEek_2014_crop.jpg/500px-Pavel_Bla%C5%BEek_2014_crop.jpg',
       role: 'exministr spravedlnosti',
       scope: 'celostátní',
       category: 'Potvrzený zmrd',
@@ -1199,7 +1200,7 @@
       party: "SPD (nestraník)",
       role: "ministr dopravy",
       scope: "celostátní",
-      photo: null, photoPos: null, gallery: [], obvod: null,
+      photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Ivan_Bedn%C3%A1rik.jpg/500px-Ivan_Bedn%C3%A1rik.jpg', photoPos: null, gallery: [], obvod: null,
       category: "Hraniční případ",
       categoryReason: "Bednárik není politický hráč s ekosystémem kauz — je manažer, jehož stín vrhá jedna prošetřovaná transakce a síť osobních vazeb na problematické aktéry. Bez doloženého osobního obohacení ani opakovaných lží mu nelze přiřadit ani Systémového, ani Populistického zmrda. Hraniční proto, že kauza vagonů SMK je doložená a referovaná v seriózních médiích, i když NCOZ případ uzavřel bez obvinění.",
       dictum: "Kompetentní manažer se správnými přáteli na nesprávných místech — vyšetřování skončilo, konexe zůstaly.",
