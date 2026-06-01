@@ -46,17 +46,17 @@ const TIER_BG = {
    s jeho vlastními pojmy: zmrdí embryo, ovládnutí, „navrch huj vespod fuj", líže kliky. */
 const DFENS_STADIA = [
   { min: 0.0, cls: 'v-0', label: 'Imunní organismus',
-    text: 'Funkční obranné mechanismy. Zmrd narazí na kompetenci a odejde s nepořízenou — organizace ho vyplivne dřív, než stihne líznout první kliku.' },
+    text: 'Organizace s funkčními obrannými mechanismy. Kompetence tu poráží intriku a lízání klik se nevyplácí — zmrda struktura vyplivne dřív, než stihne zapustit kořeny.' },
   { min: 0.5, cls: 'v-low', label: 'Zmrdí embryo',
-    text: 'Ojedinělé zmrdí embryo v jinak zdravé tkáni. Učí se z infiltrační příručky tvářit jako solidní mladý profík — zatím anomálie, ne vzorec.' },
+    text: 'Zdravá tkáň s ojedinělým zmrdím embryem. Pár skvrn, žádný vzorec — strukturu drží výkon, ne loajalita, a nákazu zatím izoluje.' },
   { min: 1.5, cls: 'v-low', label: 'První fáze ovládnutí',
-    text: 'Koeficient nasycenosti roste. Zmrdi se zabydleli a operují koordinovaně — síťují, vysávají cizí zásluhy a loajalita k partě začíná přebíjet výkon.' },
+    text: 'Koeficient nasycenosti struktury roste. Zmrdi uvnitř operují koordinovaně, tvoří se konglomerát a loajalita k partě začíná v rozhodování přebíjet výkon.' },
   { min: 2.5, cls: 'v-mid', label: 'Systémová nákaza',
-    text: 'Struktura prolezlá zmrdy. Vládne „navrch huj, vespod fuj" — výsledky chybí, ale kdo neumí líznout kliku, odchází nebo mlčí. Organizace slouží partě, ne účelu.' },
+    text: 'Struktura prolezlá zmrdy. Organizaci vládne „navrch huj, vespod fuj" — odměňuje se lízání klik, ne výsledek; kdo nehraje, odchází nebo mlčí. Slouží partě, ne svému účelu.' },
   { min: 3.5, cls: 'v-high', label: 'Zmrdokracie',
-    text: 'Konglomerát zmrdů u kormidla. Život jako nepřetržité divadelní představení, deklarovaný účel je kulisa: jiná tvář nahoru, jiná dolů, moc a peníze mezi své.' },
+    text: 'Konglomerát zmrdů ovládl kormidlo. Celá organizace jede jako divadelní představení, deklarovaný účel je kulisa a moc s penězi se přerozdělují mezi své.' },
   { min: 4.5, cls: 'v-high', label: 'Učebnicový konglomerát',
-    text: 'Terminální nasycenost. Organizace existuje, aby zmrdy živila, kryla a reprodukovala. Zmrdobijce by tu ukřižovali — čistá kultura zmrda dle učebnice.' },
+    text: 'Terminální nasycenost struktury. Organizace existuje už jen proto, aby zmrdy živila, kryla a reprodukovala — zmrdobijce by tu ukřižovali. Čistá kultura zmrda dle učebnice.' },
 ];
 
 /* monogramová „loga" stran — značková barva, kde je ověřená; jinak neutrální tmavá.
@@ -79,6 +79,42 @@ const PARTY_BRAND = {
   'Naše Česko': { bg: '#2f3540', abbr: 'NČ' },
   'Nezařazení': { bg: '#9a958c', abbr: '—' },
 };
+
+/* skutečná loga stran — soubory na Wikimedia Commons (zdroj: Wikidata P154 / Commons).
+   Special:FilePath dává stabilní hotlink. Když logo chybí nebo se nenačte → monogram. */
+const LOGO_FILE = {
+  'ANO': 'ANO Logo.svg',
+  'ODS': 'Logo of ODS (2015).svg',
+  'SPD': 'Svoboda a přímá demokracie - simple (Czech, 2015).svg',
+  'Piráti': 'Logo Pirátů.svg',
+  'STAN': 'Logo STAROSTOVÉ.svg',
+  'KDU-ČSL': 'KDU-ČSL Logo 1992.svg',
+  'TOP 09': 'Logo of the TOP 09 (2021).svg',
+  'Motoristé sobě': 'Motoristé sobě logo.svg',
+  'Stačilo!/KSČM': 'Stačilo Logo 2026.svg',
+  'SOCDEM/ČSSD': 'Logo of the Social Democracy (Czech Republic).svg',
+  'SEN 21': 'SEN 21 logo (2024).svg',
+  'Svobodní': 'Svobodní 2022.svg',
+  'Naše Česko': 'Naše Česko, Martin Kuba, hnutí (logo).png',
+  'Přísaha': 'Přísaha 2021.svg',
+  'Trikolora': "Tricolour Citizens' Movement logo.svg",
+};
+
+const logoUrl = (f) => 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(f.replace(/ /g, '_')) + '?width=320';
+
+function StranaLogo({ party }) {
+  const [err, setErr] = React.useState(false);
+  const file = LOGO_FILE[party];
+  const b = PARTY_BRAND[party] || { bg: '#2f3540', abbr: party.slice(0, 3) };
+  if (file && !err) {
+    return (
+      <span className="strana-logo strana-logo-img">
+        <img src={logoUrl(file)} alt={party + ' logo'} loading="lazy" onError={() => setErr(true)} />
+      </span>
+    );
+  }
+  return <span className="strana-logo" style={{ background: b.bg, color: b.fg || '#fff' }} aria-hidden="true">{b.abbr}</span>;
+}
 
 function stadiumFor(avg) {
   let s = DFENS_STADIA[0];
@@ -157,10 +193,7 @@ function StranyView({ go }) {
           <section className="strana-card" key={p.name}>
             <div className="strana-head">
               <span className="strana-rank mono">{String(i + 1).padStart(2, '0')}</span>
-              {(() => {
-                const b = PARTY_BRAND[p.name] || { bg: '#2f3540', abbr: p.name.slice(0, 3) };
-                return <span className="strana-logo" style={{ background: b.bg, color: b.fg || '#fff' }} aria-hidden="true">{b.abbr}</span>;
-              })()}
+              <StranaLogo party={p.name} />
               <div className="strana-id">
                 <h2 className="strana-name">{p.name}</h2>
                 <div className="strana-meta mono">
@@ -211,7 +244,9 @@ function StranyView({ go }) {
 
       <p className="carto-note mono" style={{ marginTop: 28 }}>
         Zobrazeno {assessed.length} politiků s naměřeným skóre · nehodnocení kandidáti čekají na posudek · zdroj členění: psp.cz, senat.cz<br />
-        Stádia „nasycenosti struktury zmrdy" volně dle zmrdologie D-FENS (dfens-cz.com). Loga stran jsou stylizované monogramy, ne oficiální značky.
+        Stádia „nasycenosti struktury zmrdy" volně dle zmrdologie D-FENS —{' '}
+        <a href="https://dfens-cz.com/zmrdi-i-zasveceni/" target="_blank" rel="noopener noreferrer" className="strany-dfens-link">origoš metodika ↗</a>.
+        {' '}Loga stran © příslušné strany; zdroj Wikimedia Commons.
       </p>
 
       {tip && (
