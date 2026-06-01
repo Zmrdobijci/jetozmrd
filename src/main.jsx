@@ -20,4 +20,5 @@ import './legacy/views/hra.jsx';
 import './legacy/views/detail.jsx';
 import './legacy/views/hledat.jsx';
 import './legacy/views/metodika.jsx';
+import './legacy/views/strany.jsx';
 import './legacy/app.jsx';

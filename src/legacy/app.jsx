@@ -4,6 +4,7 @@ const { useState, useEffect, useCallback } = React;
 const NAV = [
 ['home', 'Domů'],
 ['mapa', 'Mapa'],
+['strany', 'Strany'],
 ['naked', 'Naked Attraction'],
 ['ai', 'Zeptat se AI'],
 ['zebricek', 'Žebříček'],
@@ -67,6 +68,7 @@ function App() {
   let content;
   if (view === 'detail') content = <Detail go={go} id={id} />;else
   if (view === 'mapa') content = <MapaView go={go} selected={selectedKraj} setSelected={setSelectedKraj} />;else
+  if (view === 'strany') content = <StranyView go={go} />;else
   if (view === 'ai') content = <AiZmrdolog go={go} open={(id) => go('detail', { id })} />;else
   if (view === 'naked') content = <NakedView go={go} open={(id) => go('detail', { id })} />;else
   if (view === 'hledat') content = <Hledat go={go} query={query} setQuery={setQuery} />;else

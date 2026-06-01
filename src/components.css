@@ -481,3 +481,61 @@
 @media (max-width: 560px) {
   .na-opt-grid { grid-template-columns: 1fr; }
 }
+
+/* ===== STRANY — zazmrdovatění podle stran ===== */
+.strany-view .page-head { margin-bottom: 20px; }
+.strany-legend {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-size: 11px; color: var(--ink-faint); margin-bottom: 28px;
+}
+.strany-legend .legend-bar { display: inline-flex; gap: 3px; }
+.strany-legend .legend-bar i { width: 16px; height: 11px; border-radius: 2px; display: inline-block; }
+.strany-legend-sep { opacity: 0.4; }
+
+.strany-list { display: flex; flex-direction: column; gap: 14px; }
+
+.strana-card {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--paper); padding: 18px 20px;
+}
+.strana-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.strana-rank { font-size: 13px; color: var(--ink-faint); min-width: 24px; }
+.strana-id { flex: 1; min-width: 0; }
+.strana-name { font-family: var(--font-display); font-size: 21px; line-height: 1.1; margin: 0; }
+.strana-meta { font-size: 11px; color: var(--ink-faint); margin-top: 3px; }
+.strana-hits { color: var(--signal); }
+.strana-score { text-align: right; flex-shrink: 0; }
+.strana-avg {
+  font-family: var(--font-display); font-size: 30px; font-weight: 700;
+  line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums;
+}
+.strana-avg .of { font-size: 0.45em; color: var(--ink-faint); font-weight: 400; margin-left: 1px; }
+.strana-avg-label { display: block; font-size: 10px; color: var(--ink-faint); margin-top: 3px; }
+
+.strana-bar {
+  position: relative; height: 18px; border-radius: 3px; overflow: hidden;
+  background: var(--paper-2); margin-bottom: 14px;
+}
+.strana-bar-fill {
+  position: absolute; inset: 0 auto 0 0;
+  background: color-mix(in oklch, var(--signal) 28%, var(--paper-2));
+}
+.strana-bar-label {
+  position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+  font-size: 10px; color: var(--ink-soft); white-space: nowrap;
+}
+
+.pixelfield { display: flex; flex-wrap: wrap; gap: 3px; }
+.pixel {
+  width: 15px; height: 15px; border-radius: 2px; border: none; padding: 0;
+  cursor: pointer; transition: transform 0.08s ease, outline-color 0.08s ease;
+  outline: 1px solid transparent;
+}
+.pixel:hover {
+  transform: scale(1.45); outline: 1px solid var(--ink);
+  position: relative; z-index: 2;
+}
+@media (max-width: 560px) {
+  .pixel { width: 12px; height: 12px; }
+  .strana-avg { font-size: 24px; }
+}
