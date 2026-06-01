@@ -217,6 +217,9 @@
 .finding-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .finding-q { font-size: 21px; letter-spacing: -0.02em; }
 .finding-flag { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; color: var(--paper); background: var(--signal); padding: 3px 9px; border-radius: 3px; }
+.finding.clean { border-color: var(--clean); background: linear-gradient(var(--clean-tint), var(--paper) 80px); }
+.finding.clean .finding-icon { color: var(--clean); border-color: var(--clean); }
+.finding-flag.clean { background: var(--clean); }
 .finding-text { font-size: 16px; color: var(--ink); margin: 10px 0 14px; }
 .sources { display: flex; flex-direction: column; gap: 6px; }
 .sources-label { font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 2px; }

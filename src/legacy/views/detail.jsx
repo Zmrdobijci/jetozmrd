@@ -11,6 +11,9 @@ function Detail({ go, id }) {
 
   const litDims = DIMENSIONS.filter((d) => p.dims[d.key].lit);
   const cleanDims = DIMENSIONS.filter((d) => !p.dims[d.key].lit);
+  // čisté osy s vlastním doložením (citace) dostanou plný blok; ostatní jen kompaktní chip
+  const cleanDocumented = cleanDims.filter((d) => (p.dims[d.key].sources || []).length > 0);
+  const cleanPlain = cleanDims.filter((d) => (p.dims[d.key].sources || []).length === 0);
 
   return (
     <div className="view detail wrap">
@@ -106,12 +109,46 @@ function Detail({ go, id }) {
             </div>
           )}
 
-          {/* čisté osy */}
-          {cleanDims.length > 0 && (
+          {/* čisté osy s vlastním doložením (např. doložená kariéra mimo politiku) */}
+          {cleanDocumented.length > 0 && (
+            <div className="findings-head" style={{ marginTop: 18 }}>
+              <div className="kicker">Čisté osy — s doložením · {cleanDims.length} z 6 čistých</div>
+              <h2 className="findings-h2">Co je čisté a proč</h2>
+            </div>
+          )}
+          {cleanDocumented.map((d) => {
+            const dim = p.dims[d.key];
+            return (
+              <div className="finding clean" id={'dim-' + d.key} key={d.key}>
+                <div className="finding-icon"><DimIcon k={d.key} size={24} /></div>
+                <div className="finding-body">
+                  <div className="finding-top">
+                    <h3 className="finding-q">{d.q}</h3>
+                    <span className="finding-flag clean mono">NE</span>
+                  </div>
+                  <p className="finding-text">{dim.finding}</p>
+                  <div className="sources">
+                    <span className="sources-label mono">Zdroje:</span>
+                    {dim.sources.map((s, i) => (
+                      <a className="source" key={i} href={s.u} target="_blank" rel="noopener noreferrer">
+                        <Ico k="doc" size={14} />
+                        <span className="source-pub mono">{s.p}</span>
+                        <span className="source-t">{s.t}</span>
+                        <Ico k="ext" size={13} />
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+
+          {/* zbývající čisté osy bez dalšího nálezu */}
+          {cleanPlain.length > 0 && (
             <div className="clean-list">
-              <div className="kicker">Čisté osy · {cleanDims.length} z 6</div>
+              <div className="kicker">Čisté osy{cleanDocumented.length > 0 ? ' — bez dalšího nálezu' : ' · ' + cleanDims.length + ' z 6'}</div>
               <div className="clean-grid">
-                {cleanDims.map((d) => (
+                {cleanPlain.map((d) => (
                   <div className="clean-item" key={d.key}>
                     <DimIcon k={d.key} size={18} />
                     <span>{d.q}</span>
