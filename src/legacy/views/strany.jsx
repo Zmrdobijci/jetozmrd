@@ -73,6 +73,15 @@ function StranyView({ go }) {
 
   const maxTotal = Math.max(...parties.map((p) => p.total), 1);
 
+  const [tip, setTip] = React.useState(null); // { m, x, y }
+  const showTip = (m, e) => {
+    const pad = 16, w = 230, h = 96;
+    let x = e.clientX + 18, y = e.clientY - h - 12;
+    if (x + w > window.innerWidth - pad) x = e.clientX - w - 18;
+    if (y < pad) y = e.clientY + 20;
+    setTip({ m, x, y });
+  };
+
   return (
     <div className="view strany-view wrap">
       <header className="page-head">
@@ -128,8 +137,10 @@ function StranyView({ go }) {
                   key={m.id}
                   className="pixel"
                   style={{ background: TIER_BG[m.tier] || TIER_BG['v-gray'] }}
-                  title={m.name + ' — ' + m.score + '/6 · ' + m.category}
                   onClick={() => go('detail', { id: m.id })}
+                  onMouseEnter={(e) => showTip(m, e)}
+                  onMouseMove={(e) => showTip(m, e)}
+                  onMouseLeave={() => setTip(null)}
                   aria-label={m.name}
                 />
               ))}
@@ -141,6 +152,22 @@ function StranyView({ go }) {
       <p className="carto-note mono" style={{ marginTop: 28 }}>
         Zobrazeno {assessed.length} politiků s naměřeným skóre · nehodnocení kandidáti čekají na posudek · zdroj členění: psp.cz, senat.cz
       </p>
+
+      {tip && (
+        <div className="pixel-tip" style={{ left: tip.x, top: tip.y }}>
+          {tip.m.photo
+            ? <img className="pixel-tip-photo" src={tip.m.photo} alt="" loading="lazy" style={tip.m.photoPos ? { objectPosition: tip.m.photoPos } : null} />
+            : <span className="pixel-tip-photo pixel-tip-nophoto">FOTO</span>}
+          <div className="pixel-tip-body">
+            <div className="pixel-tip-name">{tip.m.name}</div>
+            <div className="pixel-tip-party mono">{tip.m.party}</div>
+            <div className="pixel-tip-verdict">
+              <span className={'pixel-tip-score ' + tip.m.tier}>{tip.m.score}<span className="of">/6</span></span>
+              <span className={'pixel-tip-cat ' + tip.m.tier}>{tip.m.category}</span>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
