@@ -188,12 +188,15 @@ function Metodika({ go }) {
           Tutéž optiku přikládáme na politické strany: průměrné skóre na politika určuje stádium,
           v němž se strana jako organismus nachází.
         </p>
-        <div className="scale-rows">
-          {orgStadia.map(([band, label, cls, desc]) => (
-            <div className="scale-row" key={label}>
-              <span className={'verdict ' + cls}><strong>{band}</strong></span>
-              <span className="scale-t">{label}</span>
-              <span className="scale-d">{desc}</span>
+        <div className="meth-org-list">
+          {orgStadia.map(([band, label, cls, desc], i) => (
+            <div className={'meth-org-stadium ' + cls} key={label}>
+              <div className="meth-org-stadium-head">
+                <span className="meth-org-step mono">{String(i + 1).padStart(2, '0')}</span>
+                <span className="meth-org-label">{label}</span>
+                <span className="meth-org-band mono">{band}</span>
+              </div>
+              <p className="meth-org-desc">{desc}</p>
             </div>
           ))}
         </div>

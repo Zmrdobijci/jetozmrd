@@ -620,9 +620,22 @@
 
 .meth-org-cta { margin-top: 18px; }
 
-/* org-stádia: delší pásma skóre se nesmí lámat v pilulce */
-.meth-org .scale-row { grid-template-columns: 124px 1fr; }
-.meth-org .verdict { white-space: nowrap; justify-content: center; }
-@media (max-width: 560px) {
-  .meth-org .scale-row { grid-template-columns: 112px 1fr; }
+/* org-stádia: čisté karty s barevným okrajem (jako na stránce Strany) */
+.meth-org-list { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+.meth-org-stadium {
+  padding: 14px 18px; border-radius: var(--radius);
+  background: var(--paper-2); border-left: 3px solid var(--ink-faint);
 }
+.meth-org-stadium.v-0 { border-left-color: var(--clean); }
+.meth-org-stadium.v-low { border-left-color: oklch(0.58 0.12 75); }
+.meth-org-stadium.v-mid { border-left-color: oklch(0.58 0.17 45); }
+.meth-org-stadium.v-high { border-left-color: var(--signal); }
+.meth-org-stadium-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.meth-org-step { font-size: 12px; color: var(--ink-faint); }
+.meth-org-label { font-family: var(--font-display); font-weight: 700; font-size: 19px; letter-spacing: -0.01em; }
+.meth-org-stadium.v-0 .meth-org-label { color: var(--clean); }
+.meth-org-stadium.v-low .meth-org-label { color: oklch(0.52 0.13 75); }
+.meth-org-stadium.v-mid .meth-org-label { color: oklch(0.55 0.17 45); }
+.meth-org-stadium.v-high .meth-org-label { color: var(--signal); }
+.meth-org-band { margin-left: auto; font-size: 11px; color: var(--ink-faint); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.meth-org-desc { font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); margin: 0; }
