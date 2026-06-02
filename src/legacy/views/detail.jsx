@@ -29,7 +29,10 @@ function Detail({ go, id }) {
               ? <img className="detail-portrait detail-photo" src={p.photo} alt={p.name} style={p.photoPos ? { objectPosition: p.photoPos } : null} />
               : <span className="detail-portrait portrait" aria-hidden="true">FOTO<br />politika</span>}
             <div>
-              <div className="detail-party mono">{p.party} · {p.scope === 'senát' ? 'kandidát do Senátu' : p.role}</div>
+              <div className="detail-partyline">
+                <StranaLogo party={canonStrana(p.party)} />
+                <div className="detail-party mono">{p.party} · {p.scope === 'senát' ? 'kandidát do Senátu' : p.role}</div>
+              </div>
               <h1 className="detail-name">{p.name}</h1>
               {p.scope !== 'senát' && <div className="detail-role">{p.role}</div>}
               {p.category && <div className={'detail-cat ' + p.tier}>{p.category}</div>}
