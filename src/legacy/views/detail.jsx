@@ -25,14 +25,18 @@ function Detail({ go, id }) {
         {/* LEVÝ SLOUPEC — identita + skóre */}
         <div className="detail-left">
           <div className="detail-id">
-            {p.photo
-              ? <img className="detail-portrait detail-photo" src={p.photo} alt={p.name} style={p.photoPos ? { objectPosition: p.photoPos } : null} />
-              : <span className="detail-portrait portrait" aria-hidden="true">FOTO<br />politika</span>}
-            <div>
-              <div className="detail-partyline">
+            <div className="detail-portrait-col">
+              {p.photo
+                ? <img className="detail-portrait detail-photo" src={p.photo} alt={p.name} style={p.photoPos ? { objectPosition: p.photoPos } : null} />
+                : <span className="detail-portrait portrait" aria-hidden="true">FOTO<br />politika</span>}
+              <button type="button" className="detail-party-logo" onClick={() => go('strany')}
+                title={'Strana: ' + p.party + ' — zobrazit žebříček stran'}
+                aria-label={'Strana ' + p.party + ' — přejít na stránku Strany'}>
                 <StranaLogo party={canonStrana(p.party)} />
-                <div className="detail-party mono">{p.party} · {p.scope === 'senát' ? 'kandidát do Senátu' : p.role}</div>
-              </div>
+              </button>
+            </div>
+            <div>
+              <div className="detail-party mono">{p.party} · {p.scope === 'senát' ? 'kandidát do Senátu' : p.role}</div>
               <h1 className="detail-name">{p.name}</h1>
               {p.scope !== 'senát' && <div className="detail-role">{p.role}</div>}
               {p.category && <div className={'detail-cat ' + p.tier}>{p.category}</div>}

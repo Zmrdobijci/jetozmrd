@@ -193,10 +193,13 @@
 .gallery-item { margin: 0; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
 .gallery-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
 .gallery-item figcaption { padding: 10px 12px; font-size: 11.5px; line-height: 1.35; color: var(--ink-soft); border-top: 1px solid var(--line); }
-.detail-partyline { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
-.detail-partyline .detail-party { margin-bottom: 0; }
-.detail-partyline .strana-logo { width: 34px; height: 34px; font-size: 11px; border-radius: 7px; }
-.detail-partyline .strana-logo-img { width: auto; min-width: 40px; max-width: 96px; height: 34px; padding: 4px 7px; }
+.detail-portrait-col { display: flex; flex-direction: column; align-items: center; gap: 12px; flex: none; }
+.detail-party-logo { all: unset; cursor: pointer; display: block; width: 84px; border-radius: 9px; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.detail-party-logo:hover { transform: translateY(-1px); }
+.detail-party-logo:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+.detail-party-logo .strana-logo { width: 84px; height: 56px; font-size: 17px; border-radius: 9px; }
+.detail-party-logo .strana-logo-img { width: 84px; min-width: 0; max-width: 84px; height: 56px; padding: 7px 9px; }
+.detail-party-logo:hover .strana-logo-img { box-shadow: inset 0 0 0 1px var(--ink-faint); }
 .detail-party { font-size: 12px; color: var(--ink-faint); letter-spacing: 0.04em; margin-bottom: 6px; }
 .detail-name { font-size: clamp(28px, 4vw, 38px); letter-spacing: -0.03em; }
 .detail-role { font-size: 14px; color: var(--ink-soft); margin-top: 6px; }
